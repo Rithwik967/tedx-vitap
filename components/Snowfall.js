@@ -1,4 +1,3 @@
-// ...existing code...
 'use client';
 import { useEffect, useRef } from 'react';
 
@@ -10,6 +9,7 @@ export default function Snowfall({
   minSize = 0.6,
   accumulationStrength = 0.6,
   columnsPerPx = 0.25,
+  opacity = 0.5, // overall opacity multiplier (0.5 = 50%)
 } = {}) {
   const canvasRef = useRef(null);
 
@@ -72,8 +72,8 @@ export default function Snowfall({
       ctx.save();
       ctx.filter = 'blur(8px)';
       const grad = ctx.createLinearGradient(0, height, 0, height - Math.max(...accum || [0]) - 60);
-      grad.addColorStop(0, hexToRgba(color, 0.95));
-      grad.addColorStop(1, hexToRgba(color, 0.1));
+      grad.addColorStop(0, hexToRgba(color, 0.95 * opacity));
+      grad.addColorStop(1, hexToRgba(color, 0.1 * opacity));
       ctx.fillStyle = grad;
 
       ctx.beginPath();
@@ -90,7 +90,7 @@ export default function Snowfall({
       ctx.restore();
 
       ctx.save();
-      ctx.fillStyle = hexToRgba('#ffffff', 0.06);
+      ctx.fillStyle = hexToRgba('#ffffff', 0.06 * opacity);
       ctx.beginPath();
       ctx.moveTo(0, height);
       for (let i = 0; i < accum.length; i++) {
@@ -110,8 +110,8 @@ export default function Snowfall({
       for (let p of particles) {
         ctx.beginPath();
         const grad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r * 3);
-        grad.addColorStop(0, hexToRgba(color, p.a));
-        grad.addColorStop(0.6, hexToRgba(color, p.a * 0.35));
+        grad.addColorStop(0, hexToRgba(color, p.a * opacity));
+        grad.addColorStop(0.6, hexToRgba(color, p.a * 0.35 * opacity));
         grad.addColorStop(1, hexToRgba('#000000', 0));
         ctx.fillStyle = grad;
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
@@ -159,7 +159,7 @@ export default function Snowfall({
       cancelAnimationFrame(rafId);
       ro.disconnect();
     };
-  }, [count, color, maxSize, minSize, accumulationStrength, columnsPerPx]);
+  }, [count, color, maxSize, minSize, accumulationStrength, columnsPerPx, opacity]);
 
   return (
     <canvas
@@ -192,4 +192,3 @@ function hexToRgba(hex, alpha = 1) {
   const b = bigint & 255;
   return `rgba(${r}, ${g}, ${b}, ${alpha})`;
 }
-// ...existing
