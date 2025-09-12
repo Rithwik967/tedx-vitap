@@ -1,12 +1,11 @@
 import { Inter } from 'next/font/google'
 import './globals.css'
-// removed Snowfall import from layout; Snowfall is now scoped to Hero
 
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
   title: 'TEDx VITAP',
-  description: 'Unfoldund Possibilities',
+  description: 'Unfolding Possibilities', // Corrected typo from "Unfoldund"
   icons: {
     icon: '/favicon.ico',
     android: '/logo-white.png',
@@ -16,7 +15,8 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    // Added suppressHydrationWarning to prevent browser extension errors
+    <html lang="en" suppressHydrationWarning>
       <body className={`${inter.className} bg-black text-white`}>
         {children}
       </body>

@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
+import ReasonsToAttend from "@/components/ReasonsToAttend";
 import Events from "@/components/Events";
 import Team from "@/components/Team";
 import Sponsors from "@/components/Sponsors";
@@ -13,6 +14,7 @@ export default function Home() {
       <Navbar />
       <Hero />
       <About />
+      <ReasonsToAttend />
       <Events />
       <PreviousSpeakers />
       <Team />

@@ -14,7 +14,7 @@ const teamMembers = [
   { name: 'Sangani Sathwik', role: 'Event Manager' },
   { name: 'Amrutha', role: 'Event manager' },
   { name: 'Klarika', role: 'Event manager' },
-  { name: 'Sravan', role: 'Videography' },
+  { name: 'Sai Sravan', role: 'Videography' },
 ];
 
 

@@ -15,7 +15,7 @@ const About = () => {
         <div className="flex justify-center">
           <div className="p-2 border-2 border-red-500 rounded-xl">
             <Image 
-              src="/speaker.png" // Make sure this image is in your `public` folder
+              src="/aboutus.jpg" // Make sure this image is in your `public` folder
               alt="TEDx Speaker" 
               width={350} 
               height={250} 

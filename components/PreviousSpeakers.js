@@ -13,7 +13,7 @@ const speakers = [
     name: 'Chandan Perla',
     role: 'Entrepreneur',
     bio: 'Chandan Perla is a vibrant 21-year-old businessman who is passionate about creating communities and innovation. His entrepreneurial path includes investment backing from esteemed organisations such as Lancify and WeWork Labs, as well as co-founding Podcast Circle and being a founding team member of Bluelearn.in.',
-    imageUrl: '/speakers/chandan.jpeg',
+    imageUrl: '/Speakers/chandan.jpeg',
   },
   {
     name: 'Madhan Srinivasan',
@@ -31,7 +31,7 @@ const speakers = [
     name: 'Narendra Nath',
     role: 'Film Director',
     bio: "Film director and writer Narendra Nath is a visionary who chose to follow his love of storytelling through cinema instead of following traditional professional pathways. 'Miss India,' the filmmaker Narendra Nath's first film, is a testament to his visionary artistic style and dedication to superb narrative.",
-    imageUrl: '/Speakers/narendra.jpeg', // Placeholder image
+    imageUrl: '/Speakers/Narendra.jpeg', // Placeholder image
   },
   {
     name: 'Sagarikka S',
