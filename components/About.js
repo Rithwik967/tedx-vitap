@@ -23,7 +23,7 @@ const About = () => {
                   About TEDx
                 </h3>
                 <p className="text-gray-300 leading-relaxed mb-4">
-                  TEDx is a grassroots initiative, created in the spirit of TED's overall mission to research and discover "ideas worth spreading." TEDx brings the spirit of TED to local communities around the globe through TEDx events.
+                  TEDx is a grassroots initiative, created in the spirit of TED&apos;s overall mission to research and discover &quot;ideas worth spreading.&quot; TEDx brings the spirit of TED to local communities around the globe through TEDx events.
                 </p>
                 <p className="text-gray-300 leading-relaxed">
                   These events are organized independently by volunteers who are passionate about sharing knowledge and inspiring their communities.

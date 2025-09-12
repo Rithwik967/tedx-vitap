@@ -205,7 +205,7 @@ const speakersData = [
     ctaText: "Learn More",
     ctaLink: "https://www.ted.com/tedx/events/56718",
     content: () => (
-      <p>Film director and writer Narendra Nath is a visionary who chose to follow his love of storytelling. His first film, 'Miss India,' is a testament to his visionary artistic style.</p>
+      <p>Film director and writer Narendra Nath is a visionary who chose to follow his love of storytelling. His first film, &apos;Miss India&apos;, is a testament to his visionary artistic style.</p>
     ),
   },
   {
