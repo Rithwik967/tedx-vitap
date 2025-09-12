@@ -14,7 +14,7 @@ const Hero = () => {
       {/* content above the snow */}
       <div className="relative z-10 max-w-6xl mx-auto grid md:grid-cols-2 gap-8 items-center">
         <div className="text-left">
-          <h1 className="text-5xl md:text-7xl font-bold leading-tight">Welcome to TEDx VITAP'25</h1>
+          <h1 className="text-5xl md:text-7xl font-bold leading-tight">Welcome to TEDx VITAP&apos;25</h1>
           <p className="mt-4 text-gray-400">Welcome to the official page of TEDx VITAP. Join us for a journey of innovation, inspiration, and impactful ideas.</p>
 
           {/* UPDATED: TEDx logo (links to external TEDx page) then Our Events button */}
