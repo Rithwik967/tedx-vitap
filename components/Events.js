@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 const Events = () => {
   return (
-    <section className="py-20 px-6 text-center">
+    <section id="events" className="py-20 px-6 text-center">
       <div className="max-w-5xl mx-auto">
         <h2 className="text-3xl font-bold mb-10">Upcoming events</h2>
         <div className="grid md:grid-cols-2 gap-12 items-center">
