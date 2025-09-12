@@ -1,5 +1,5 @@
 "use client"; // Required for components with user interaction like dragging
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image"; // 1. Import the Next.js Image component
 import {
   DraggableCardBody,
@@ -34,6 +34,24 @@ const reasonsData = [
 ];
 
 export function ReasonsToAttend() {
+  const [clickedCards, setClickedCards] = useState(new Set());
+  const [isAnimating, setIsAnimating] = useState(false);
+
+  const handleCardClick = (cardId) => {
+    if (isAnimating) return;
+    
+    setIsAnimating(true);
+    setClickedCards(prev => new Set([...prev, cardId]));
+    
+    // Reset animation state after animation completes
+    setTimeout(() => {
+      setIsAnimating(false);
+    }, 500);
+  };
+
+  const visibleCards = reasonsData.filter(item => !clickedCards.has(item.id));
+  const allCardsClicked = clickedCards.size === reasonsData.length;
+
   return (
     <DraggableCardContainer
       className="relative h-200 flex min-h-screen w-full items-center justify-center overflow-clip bg-black">
@@ -44,21 +62,43 @@ export function ReasonsToAttend() {
           Reasons to Attend 
         </h2>
         <p className="max-w-xl mx-auto mt-4 text-red-500" style={{ textShadow: '1px 1px 8px rgba(0,0,0,0.8)' }}>
-          Step into a world where hidden opportunities unfold and breakthroughs take center stage.
+          {allCardsClicked 
+            ? "Ready to experience TEDxVITAP? Book your tickets now!"
+            : "Click on each card to discover why you should attend"
+          }
         </p>
       </div>
 
-      {/* "Book your tickets" text behind the cards - DECREASED SIZE */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center z-0 pointer-events-none">
-        <p className="text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-extrabold text-white opacity-5 select-none whitespace-nowrap" style={{ lineHeight: '1' }}>
+      {/* "Book your tickets" text behind the cards - becomes more prominent when all cards are clicked */}
+      <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center z-0 pointer-events-none transition-all duration-1000 ${
+        allCardsClicked ? 'opacity-20 scale-110' : 'opacity-5'
+      }`}>
+        <p className="text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-extrabold text-white select-none whitespace-nowrap" style={{ lineHeight: '1' }}>
           Book your tickets
         </p>
       </div>
 
+      {/* Call to Action Button - appears when all cards are clicked */}
+      {allCardsClicked && (
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-40 animate-pulse">
+          <button className="bg-red-500 hover:bg-red-600 text-white font-bold py-4 px-8 rounded-lg text-xl md:text-2xl transition-all duration-300 transform hover:scale-105 shadow-2xl">
+            Book Your Tickets Now
+          </button>
+        </div>
+      )}
+
       {/* Draggable Cards */}
-      {reasonsData.map((item) => (
-        <DraggableCardBody key={item.id} className={item.className}>
-          <div className="p-4 rounded-lg shadow-xl hover:bg-red-500">
+      {visibleCards.map((item) => (
+        <DraggableCardBody 
+          key={item.id} 
+          className={`${item.className} transition-all duration-500 ${
+            clickedCards.has(item.id) ? 'opacity-0 scale-0 rotate-180' : 'opacity-100 scale-100 rotate-0'
+          }`}
+        >
+          <div 
+            className="p-4 rounded-lg shadow-xl hover:bg-red-500 cursor-pointer transition-all duration-300 transform hover:scale-105 active:scale-95"
+            onClick={() => handleCardClick(item.id)}
+          >
             <Image
               src={item.image}
               alt={item.title}
@@ -66,13 +106,32 @@ export function ReasonsToAttend() {
               height={320}
               className="pointer-events-none relative z-10 h-64 w-64 md:h-80 md:w-80 rounded-md object-cover" 
             />
-            <h3
-              className="mt-4 text-center text-xl md:text-2xl font-bold text-neutral-200">
+            <h3 className="mt-4 text-center text-xl md:text-2xl font-bold text-neutral-200">
               {item.title}
             </h3>
+            {/* Mobile hint */}
+            <div className="md:hidden mt-2 text-center text-sm text-red-400 opacity-70">
+              Tap to explore
+            </div>
           </div>
         </DraggableCardBody>
       ))}
+
+      {/* Progress indicator */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-30">
+        <div className="flex space-x-2">
+          {reasonsData.map((_, index) => (
+            <div
+              key={index}
+              className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                index < clickedCards.size 
+                  ? 'bg-red-500 scale-110' 
+                  : 'bg-gray-600'
+              }`}
+            />
+          ))}
+        </div>
+      </div>
     </DraggableCardContainer>
   );
 }
