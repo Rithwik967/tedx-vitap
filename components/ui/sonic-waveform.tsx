@@ -5,18 +5,20 @@ import { motion } from 'framer-motion';
 import { ArrowRight, BarChart2 } from 'lucide-react';
 
 // A utility function for class names
-const cn = (...classes) => classes.filter(Boolean).join(' ');
+const cn = (...classes: (string | undefined | null | false)[]) => classes.filter(Boolean).join(' ');
 
 // Sonic Waveform Canvas Component
 const SonicWaveformCanvas = () => {
-    const canvasRef = useRef(null);
+    const canvasRef = useRef<HTMLCanvasElement>(null);
 
     useEffect(() => {
         const canvas = canvasRef.current;
         if (!canvas) return;
 
         const ctx = canvas.getContext('2d');
-        let animationFrameId;
+        if (!ctx) return;
+        
+        let animationFrameId: number;
         const mouse = { x: canvas.width / 2, y: canvas.height / 2 };
         let time = 0;
 
@@ -65,7 +67,7 @@ const SonicWaveformCanvas = () => {
             animationFrameId = requestAnimationFrame(draw);
         };
 
-        const handleMouseMove = (event) => {
+        const handleMouseMove = (event: MouseEvent) => {
             mouse.x = event.clientX;
             mouse.y = event.clientY;
         };
@@ -91,13 +93,13 @@ const SonicWaveformCanvas = () => {
 const SonicWaveformHero = () => {
     const fadeUpVariants = {
         hidden: { opacity: 0, y: 20 },
-        visible: (i) => ({
+        visible: (i: number) => ({
             opacity: 1,
             y: 0,
             transition: {
                 delay: i * 0.2 + 0.5,
                 duration: 0.8,
-                ease: "easeInOut",
+                ease: "easeInOut" as const,
             },
         }),
     };

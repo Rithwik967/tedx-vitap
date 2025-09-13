@@ -4,14 +4,16 @@ import React, { useEffect, useRef } from 'react';
 
 // Sonic Waveform Divider Component - Customized for About section
 const SonicWaveformDivider = () => {
-    const canvasRef = useRef(null);
+    const canvasRef = useRef<HTMLCanvasElement>(null);
 
     useEffect(() => {
         const canvas = canvasRef.current;
         if (!canvas) return;
 
         const ctx = canvas.getContext('2d');
-        let animationFrameId;
+        if (!ctx) return;
+        
+        let animationFrameId: number;
         const mouse = { x: canvas.width / 2, y: canvas.height / 2 };
         let time = 0;
 
@@ -62,7 +64,7 @@ const SonicWaveformDivider = () => {
             animationFrameId = requestAnimationFrame(draw);
         };
 
-        const handleMouseMove = (event) => {
+        const handleMouseMove = (event: MouseEvent) => {
             const rect = canvas.getBoundingClientRect();
             mouse.x = event.clientX - rect.left;
             mouse.y = event.clientY - rect.top;
