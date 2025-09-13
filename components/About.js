@@ -23,7 +23,7 @@ const About = () => {
                   About TEDx
                 </h3>
                 <p className="text-gray-300 leading-relaxed mb-4">
-                  TEDx is a grassroots initiative, created in the spirit of TED&apos;s overall mission to research and discover &quot;ideas worth spreading.&quot; TEDx brings the spirit of TED to local communities around the globe through TEDx events.
+                  TEDx is a grassroots initiative, created in the spirit of TED's overall mission to research and discover "ideas worth spreading." TEDx brings the spirit of TED to local communities around the globe through TEDx events.
                 </p>
                 <p className="text-gray-300 leading-relaxed">
                   These events are organized independently by volunteers who are passionate about sharing knowledge and inspiring their communities.
@@ -31,12 +31,12 @@ const About = () => {
               </div>
             </div>
             <div className="order-1 lg:order-2 flex justify-center">
-              <div className="p-2 border-2 border-red-500 rounded-2xl">
+              <div className="p-2 rounded-2xl">
                 <Image 
-                  src="/aboutus.jpg"
+                  src="/tedx-logo.png"
                   alt="TEDx Speaker" 
-                  width={400} 
-                  height={300} 
+                  width={500} 
+                  height={500} 
                   className="rounded-xl"
                 />
               </div>
@@ -44,16 +44,29 @@ const About = () => {
           </div>
         </div>
 
+        {/* Divider Section */}
+        <div className="flex items-center justify-center my-16">
+          <div className="flex items-center w-full max-w-4xl">
+            <div className="flex-1 h-px bg-gradient-to-r from-transparent via-white to-transparent"></div>
+            <div className="mx-8 flex items-center">
+              <div className="w-4 h-4 bg-red-500 rounded-full"></div>
+              <div className="w-2 h-2 bg-red-500/50 rounded-full mx-2"></div>
+              <div className="w-1 h-1 bg-red-500/30 rounded-full"></div>
+            </div>
+            <div className="flex-1 h-px bg-gradient-to-r from-transparent via-white to-transparent"></div>
+          </div>
+        </div>
+
         {/* About TEDxVITAP Section */}
         <div className="mb-20">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="flex justify-center">
-              <div className="p-2 border-2 border-red-500 rounded-2xl">
+              <div className="p-2   rounded-2xl">
                 <Image 
-                  src="/tedx-logo.png"
+                  src="/hero-graphic.png"
                   alt="TEDxVITAP Logo" 
-                  width={400} 
-                  height={300} 
+                  width={600} 
+                  height={600} 
                   className="rounded-xl"
                 />
               </div>
