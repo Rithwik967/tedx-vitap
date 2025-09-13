@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar";
-import Hero from "@/components/Hero";
+import InfiniteHero from "@/components/ui/infinite-hero";
+import { ShaderBackground } from "@/components/ui/shader-background";
 import About from "@/components/About";
 import ReasonsToAttend from "@/components/ReasonsToAttend";
 import Events from "@/components/Events";
@@ -7,33 +8,25 @@ import Team from "@/components/Team";
 //import Sponsors from "@/components/Sponsors";
 import Footer from "@/components/Footer";
 import PreviousSpeakers from "@/components/PreviousSpeakers";
-import { Waves } from "@/components/ui/waves-background";
 
 export default function Home() {
   return (
     <main className="overflow-hidden">
-      {/* Unified waves background for navbar and hero */}
-      <div className="relative min-h-screen">
-        <div className="absolute inset-0 pointer-events-none z-0">
-          <Waves 
-            lineColor="rgba(244, 67, 54, 0.20)"
-            backgroundColor="transparent"
-            waveSpeedX={0.02}
-            waveSpeedY={0.01}
-            waveAmpX={40}
-            waveAmpY={20}
-            friction={0.9}
-            tension={0.01}
-            maxCursorMove={120}
-            xGap={12}
-            yGap={36}
-          />
+      {/* Navbar and Hero with unified shader background */}
+      <div className="relative min-h-[70vh] md:h-[70vh]">
+        {/* Shader background covering entire header area */}
+        <div className="absolute inset-0">
+          <ShaderBackground className="h-full w-full" />
         </div>
         
-        {/* Navbar and Hero with relative positioning */}
-        <div className="relative z-10">
+        {/* Navbar positioned above the shader */}
+        <div className="relative z-20">
           <Navbar />
-          <Hero />
+        </div>
+        
+        {/* Hero content positioned above the shader */}
+        <div className="relative z-10">
+          <InfiniteHero />
         </div>
       </div>
       
