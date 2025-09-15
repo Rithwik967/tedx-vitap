@@ -1,6 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import SonicWaveformDivider from './ui/sonic-waveform-divider';
+import { EngravedString } from './ui/interactive-string';
 
 const About = () => {
   return (
@@ -32,14 +33,8 @@ const About = () => {
               </div>
             </div>
             <div className="order-1 lg:order-2 flex justify-center">
-              <div className="p-2 rounded-2xl">
-                <Image 
-                  src="/tedx-logo.png"
-                  alt="TEDx Speaker" 
-                  width={500} 
-                  height={500} 
-                  className="rounded-xl"
-                />
+              <div className="p-2 rounded-2xl w-full max-w-6xl">
+                <EngravedString text="TEDx VITAP" />
               </div>
             </div>
           </div>
