@@ -65,7 +65,7 @@ export const EngravedString: React.FC<EngravedStringProps> = ({ text }) => {
     const cellWidth = 5;
     const cols = Math.floor((width - horizontalPadding * 2) / cellWidth);
 
-    const typeCanvasWidth = 280; // Further increased width to fit all letters
+    const typeCanvasWidth = 350; // Increased width for more letter spacing
     const typeCanvasHeight = 80; // Increased height for better text fitting
     const typeCanvas = document.createElement('canvas');
     const typeContext = typeCanvas.getContext('2d');
@@ -75,13 +75,14 @@ export const EngravedString: React.FC<EngravedStringProps> = ({ text }) => {
     typeCanvas.width = typeCanvasWidth;
     typeCanvas.height = typeCanvasHeight;
 
-    const fontSize = typeCanvasWidth * 0.15; // Reduced font size to ensure all letters fit
+    const fontSize = typeCanvasWidth * 0.12; // Further reduced font size for more spacing
     typeContext.fillStyle = 'black';
     typeContext.fillRect(0, 0, typeCanvasWidth, typeCanvasHeight);
     typeContext.fillStyle = 'white';
     typeContext.font = `bold ${fontSize}px Arial, sans-serif`; // Fallback font
     typeContext.textBaseline = 'middle';
     typeContext.textAlign = 'center';
+    typeContext.letterSpacing = '0.2em'; // Add letter spacing for more space between letters
     typeContext.fillText(text, typeCanvasWidth / 2, typeCanvasHeight / 2);
 
     const typeData = typeContext.getImageData(
