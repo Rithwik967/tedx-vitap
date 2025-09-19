@@ -1,4 +1,3 @@
-import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import { RedShaderBackground } from "@/components/ui/red-shader-background";
 import About from "@/components/About";
@@ -19,10 +18,6 @@ export default function Home() {
           <RedShaderBackground className="h-full w-full" />
         </div>
         
-        {/* Navbar positioned above the shader */}
-        <div className="relative z-20">
-          <Navbar />
-        </div>
         
         {/* Subtle overlay for better text readability */}
         <div className="absolute inset-0 bg-black/20 z-5"></div>

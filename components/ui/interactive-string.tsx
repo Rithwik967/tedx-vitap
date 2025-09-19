@@ -57,16 +57,46 @@ export const EngravedString: React.FC<EngravedStringProps> = ({ text }) => {
     width: number,
     height: number
   ): void => {
-    horizontalPadding = window.innerWidth < 1400 ? width * 0.05 : width * 0.1;
-    verticalPadding = height * 0.1;
+    // Responsive padding for different screen sizes
+    if (window.innerWidth < 768) {
+      // Mobile devices
+      horizontalPadding = width * 0.02;
+      verticalPadding = height * 0.05;
+    } else if (window.innerWidth < 1024) {
+      // Tablet devices
+      horizontalPadding = width * 0.03;
+      verticalPadding = height * 0.08;
+    } else {
+      // Desktop devices
+      horizontalPadding = width * 0.1;
+      verticalPadding = height * 0.1;
+    }
 
     const linesCount = 60;
     const lineHeight = (height - verticalPadding * 2) / linesCount;
     const cellWidth = 5;
     const cols = Math.floor((width - horizontalPadding * 2) / cellWidth);
 
-    const typeCanvasWidth = 350; // Increased width for more letter spacing
-    const typeCanvasHeight = 80; // Increased height for better text fitting
+    // Responsive text canvas dimensions
+    let typeCanvasWidth, typeCanvasHeight, fontSize;
+    
+    if (window.innerWidth < 768) {
+      // Mobile devices - smaller canvas and font
+      typeCanvasWidth = 280;
+      typeCanvasHeight = 60;
+      fontSize = typeCanvasWidth * 0.14;
+    } else if (window.innerWidth < 1024) {
+      // Tablet devices - medium canvas and font
+      typeCanvasWidth = 320;
+      typeCanvasHeight = 70;
+      fontSize = typeCanvasWidth * 0.13;
+    } else {
+      // Desktop devices - larger canvas and font
+      typeCanvasWidth = 350;
+      typeCanvasHeight = 80;
+      fontSize = typeCanvasWidth * 0.12;
+    }
+    
     const typeCanvas = document.createElement('canvas');
     const typeContext = typeCanvas.getContext('2d');
     
@@ -74,8 +104,6 @@ export const EngravedString: React.FC<EngravedStringProps> = ({ text }) => {
 
     typeCanvas.width = typeCanvasWidth;
     typeCanvas.height = typeCanvasHeight;
-
-    const fontSize = typeCanvasWidth * 0.12; // Further reduced font size for more spacing
     typeContext.fillStyle = 'black';
     typeContext.fillRect(0, 0, typeCanvasWidth, typeCanvasHeight);
     typeContext.fillStyle = 'white';
@@ -324,18 +352,29 @@ export const EngravedString: React.FC<EngravedStringProps> = ({ text }) => {
     if (!context) return;
 
     contextRef.current = context;
+    
+    // Handle resize with debouncing for better performance
+    let resizeTimeout: NodeJS.Timeout;
+    const handleResize = () => {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(() => {
+        resizeCanvas();
+      }, 100);
+    };
+
     resizeCanvas();
 
     window.addEventListener('mousemove', handleMouseMove);
     window.addEventListener('touchmove', handleTouchMove);
-    window.addEventListener('resize', resizeCanvas);
+    window.addEventListener('resize', handleResize);
 
     waitForFonts();
 
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('touchmove', handleTouchMove);
-      window.removeEventListener('resize', resizeCanvas);
+      window.removeEventListener('resize', handleResize);
+      clearTimeout(resizeTimeout);
 
       if (animationFrameRef.current) {
         cancelAnimationFrame(animationFrameRef.current);
@@ -351,7 +390,7 @@ export const EngravedString: React.FC<EngravedStringProps> = ({ text }) => {
       style={{
         position: 'relative',
         width: '100%',
-        height: '250px', // Increased height to accommodate all letters
+        height: window.innerWidth < 768 ? '180px' : window.innerWidth < 1024 ? '220px' : '250px', // Responsive height
         overflow: 'hidden'
       }}
     >

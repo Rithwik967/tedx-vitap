@@ -20,10 +20,10 @@ export const DraggableCardBody = ({
   const cardRef = useRef(null);
   const controls = useAnimationControls();
   const [constraints, setConstraints] = useState({
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
+    top: -50,
+    left: -50,
+    right: 50,
+    bottom: 50,
   });
 
   // physics biatch
@@ -48,10 +48,10 @@ export const DraggableCardBody = ({
     const updateConstraints = () => {
       if (typeof window !== "undefined") {
         setConstraints({
-          top: -window.innerHeight / 2,
-          left: -window.innerWidth / 2,
-          right: window.innerWidth / 2,
-          bottom: window.innerHeight / 2,
+          top: -100,
+          left: -100,
+          right: 100,
+          bottom: 100,
         });
       }
     };
@@ -94,6 +94,8 @@ export const DraggableCardBody = ({
       ref={cardRef}
       drag
       dragConstraints={constraints}
+      dragElastic={0.1}
+      dragMomentum={false}
       onDragStart={() => {
         document.body.style.cursor = "grabbing";
       }}
@@ -146,7 +148,7 @@ export const DraggableCardBody = ({
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       className={cn(
-        "relative min-h-96 w-80 overflow-hidden rounded-md bg-neutral-100 p-6 shadow-2xl transform-3d dark:bg-neutral-900",
+        "relative min-h-96 w-80 overflow-hidden rounded-md bg-gray-800 p-6 shadow-2xl transform-3d border border-gray-700",
         className
       )}>
       {children}
@@ -154,7 +156,7 @@ export const DraggableCardBody = ({
         style={{
           opacity: glareOpacity,
         }}
-        className="pointer-events-none absolute inset-0 bg-white select-none" />
+        className="pointer-events-none absolute inset-0 bg-gray-200 select-none" />
     </motion.div>
   );
 };

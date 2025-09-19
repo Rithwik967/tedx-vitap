@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import TeamSection from '@/components/ui/team-section';
+import TeamSection from '@/components/ui/team-section.js';
 
 const Team = () => {
   return <TeamSection />;
