@@ -1,0 +1,425 @@
+'use client';
+
+import React, { useEffect, useRef, useCallback } from 'react';
+
+interface Point {
+  x: number;
+  y: number;
+  baseX: number;
+  baseY: number;
+}
+
+interface Mouse {
+  x: number;
+  y: number;
+}
+
+const PLUS_SIZE = 16;
+const PLUS_OFFSET = 12;
+
+// Utility to get the CSS variable for foreground color, fallback to #ff0000 (red for TEDx)
+const getForegroundColor = () => {
+  if (typeof window !== 'undefined') {
+    const root = document.documentElement;
+    const style = getComputedStyle(root);
+    return style.getPropertyValue('--foreground').trim() || '#ff0000';
+  }
+  return '#ff0000';
+};
+
+interface EngravedStringProps {
+  text: string;
+}
+
+export const EngravedString: React.FC<EngravedStringProps> = ({ text }) => {
+  const wrapperRef = useRef<HTMLDivElement>(null);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const mouseRef = useRef<Mouse>({ x: -9999, y: -9999 });
+  const linesFooterRef = useRef<Point[][]>([]);
+  const contextRef = useRef<CanvasRenderingContext2D | null>(null);
+  const animationFrameRef = useRef<number>(null);
+
+  const cornersRef = useRef<{ x: number; y: number }[]>([
+    { x: 0, y: 0 }, // top-left
+    { x: 0, y: 0 }, // top-right
+    { x: 0, y: 0 }, // bottom-right
+    { x: 0, y: 0 }, // bottom-left
+  ]);
+
+  // Store the foreground color in a ref to avoid repeated lookups
+  const foregroundRef = useRef<string>('#ff0000');
+
+  const drawWaveEffect = useCallback((
+    context: CanvasRenderingContext2D,
+    width: number,
+    height: number
+  ): void => {
+    // Responsive padding for different screen sizes
+    let horizontalPadding = 0;
+    let verticalPadding = 0;
+    
+    if (typeof window !== 'undefined') {
+      if (window.innerWidth < 768) {
+        // Mobile devices
+        horizontalPadding = width * 0.02;
+        verticalPadding = height * 0.05;
+      } else if (window.innerWidth < 1024) {
+        // Tablet devices
+        horizontalPadding = width * 0.03;
+        verticalPadding = height * 0.08;
+      } else {
+        // Desktop devices
+        horizontalPadding = width * 0.1;
+        verticalPadding = height * 0.1;
+      }
+    } else {
+      // Default for SSR
+      horizontalPadding = width * 0.1;
+      verticalPadding = height * 0.1;
+    }
+
+    const linesCount = 60;
+    const lineHeight = (height - verticalPadding * 2) / linesCount;
+    const cellWidth = 5;
+    const cols = Math.floor((width - horizontalPadding * 2) / cellWidth);
+
+    // Responsive text canvas dimensions
+    let typeCanvasWidth, typeCanvasHeight, fontSize;
+    
+    if (typeof window !== 'undefined') {
+      if (window.innerWidth < 768) {
+        // Mobile devices - smaller canvas and font
+        typeCanvasWidth = 280;
+        typeCanvasHeight = 60;
+        fontSize = typeCanvasWidth * 0.14;
+      } else if (window.innerWidth < 1024) {
+        // Tablet devices - medium canvas and font
+        typeCanvasWidth = 320;
+        typeCanvasHeight = 70;
+        fontSize = typeCanvasWidth * 0.13;
+      } else {
+        // Desktop devices - larger canvas and font
+        typeCanvasWidth = 350;
+        typeCanvasHeight = 80;
+        fontSize = typeCanvasWidth * 0.12;
+      }
+    } else {
+      // Default for SSR
+      typeCanvasWidth = 350;
+      typeCanvasHeight = 80;
+      fontSize = typeCanvasWidth * 0.12;
+    }
+    
+    const typeCanvas = document.createElement('canvas');
+    const typeContext = typeCanvas.getContext('2d');
+    
+    if (!typeContext) return;
+
+    typeCanvas.width = typeCanvasWidth;
+    typeCanvas.height = typeCanvasHeight;
+    typeContext.fillStyle = 'black';
+    typeContext.fillRect(0, 0, typeCanvasWidth, typeCanvasHeight);
+    typeContext.fillStyle = 'white';
+    typeContext.font = `bold ${fontSize}px Arial, sans-serif`; // Fallback font
+    typeContext.textBaseline = 'middle';
+    typeContext.textAlign = 'center';
+    typeContext.letterSpacing = '0.2em'; // Add letter spacing for more space between letters
+    typeContext.fillText(text, typeCanvasWidth / 2, typeCanvasHeight / 2);
+
+    const typeData = typeContext.getImageData(
+      0,
+      0,
+      typeCanvasWidth,
+      typeCanvasHeight
+    ).data;
+
+    linesFooterRef.current = [];
+    for (let i = 0; i < linesCount; i++) {
+      const y = verticalPadding + i * lineHeight;
+      const line: Point[] = [];
+
+      for (let j = 0; j < cols; j++) {
+        const x = horizontalPadding + j * cellWidth;
+
+        const typeX = Math.floor((j / cols) * typeCanvasWidth);
+        const typeY = Math.floor((i / linesCount) * typeCanvasHeight);
+        const index = (typeY * typeCanvasWidth + typeX) * 4;
+        const brightness = typeData[index] || 0;
+
+        const heightOffset = (brightness / 255) * 20;
+        const finalY = y - heightOffset;
+
+        line.push({
+          x,
+          y: finalY,
+          baseX: x,
+          baseY: finalY,
+        });
+      }
+      linesFooterRef.current.push(line);
+    }
+
+    // Set corners for plus SVGs
+    if (linesFooterRef.current.length > 0 && linesFooterRef.current[0].length > 0) {
+      const firstLine = linesFooterRef.current[0];
+      const lastLine = linesFooterRef.current[linesFooterRef.current.length - 1];
+      cornersRef.current = [
+        // top-left
+        {
+          x: firstLine[0].x - PLUS_OFFSET,
+          y: firstLine[0].y - PLUS_OFFSET,
+        },
+        // top-right
+        {
+          x: firstLine[firstLine.length - 1].x + PLUS_OFFSET,
+          y: firstLine[firstLine.length - 1].y - PLUS_OFFSET,
+        },
+        // bottom-right
+        {
+          x: lastLine[lastLine.length - 1].x + PLUS_OFFSET,
+          y: lastLine[lastLine.length - 1].y + PLUS_OFFSET,
+        },
+        // bottom-left
+        {
+          x: lastLine[0].x - PLUS_OFFSET,
+          y: lastLine[0].y + PLUS_OFFSET,
+        },
+      ];
+    }
+  }, [text]);
+
+  const updateLines = (
+    mouseX: number,
+    mouseY: number,
+    radius: number = 100,
+    maxSpeed: number = 10
+  ): void => {
+    linesFooterRef.current.forEach((lineFooter) => {
+      lineFooter.forEach((point) => {
+        const dx = point.x - mouseX;
+        const dy = point.y - mouseY;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+
+        if (distance < radius) {
+          const angle = Math.atan2(dy, dx);
+          const force = (radius - distance) / radius;
+
+          point.x += Math.cos(angle) * force * maxSpeed;
+          point.y += Math.sin(angle) * force * maxSpeed;
+        }
+
+        const springX = (point.baseX - point.x) * 0.1;
+        const springY = (point.baseY - point.y) * 0.1;
+
+        point.x += springX;
+        point.y += springY;
+      });
+    });
+  };
+
+  // Draws a plus sign at the given (x, y) position
+  const drawPlus = (
+    context: CanvasRenderingContext2D,
+    x: number,
+    y: number,
+    size: number = PLUS_SIZE,
+    color: string = '#ff0000',
+    lineWidth: number = 2
+  ) => {
+    const half = size / 2;
+    context.save();
+    context.strokeStyle = color;
+    context.lineWidth = lineWidth;
+    context.beginPath();
+    // Vertical line
+    context.moveTo(x, y - half);
+    context.lineTo(x, y + half);
+    // Horizontal line
+    context.moveTo(x - half, y);
+    context.lineTo(x + half, y);
+    context.stroke();
+    context.restore();
+  };
+
+  // Draw plus signs at the four corners
+  const drawPlusSigns = useCallback((context: CanvasRenderingContext2D) => {
+    if (!cornersRef.current) return;
+    const foreground = foregroundRef.current;
+    for (const corner of cornersRef.current) {
+      drawPlus(context, corner.x, corner.y, PLUS_SIZE, foreground, 2.2);
+    }
+  }, []);
+
+  const drawLines = useCallback((
+    context: CanvasRenderingContext2D,
+    width: number,
+    height: number
+  ): void => {
+    context.clearRect(0, 0, width, height);
+
+    const foreground = foregroundRef.current;
+
+    linesFooterRef.current.forEach((lineFooter) => {
+      context.beginPath();
+      context.moveTo(lineFooter[0].x, lineFooter[0].y);
+
+      for (let i = 1; i < lineFooter.length; i++) {
+        const prev = lineFooter[i - 1];
+        const current = lineFooter[i];
+
+        const midX = (prev.x + current.x) / 2;
+        const midY = (prev.y + current.y) / 2;
+
+        context.quadraticCurveTo(prev.x, prev.y, midX, midY);
+      }
+
+      context.strokeStyle = foreground;
+      context.lineWidth = 0.5;
+      context.stroke();
+    });
+
+    // Draw plus signs at the corners
+    drawPlusSigns(context);
+  }, [drawPlusSigns]);
+
+  const resizeCanvas = useCallback((): void => {
+    const canvas = canvasRef.current;
+    const context = contextRef.current;
+    
+    if (!canvas || !context) return;
+
+    const scaleFactor = window.devicePixelRatio || 1;
+    // Use the wrapper's width instead of 100vw to prevent overflow
+    const wrapper = wrapperRef.current;
+    const width = wrapper ? wrapper.offsetWidth : canvas.offsetWidth;
+    const height = wrapper ? wrapper.offsetHeight : canvas.offsetHeight;
+    canvas.width = width * scaleFactor;
+    canvas.height = height * scaleFactor;
+
+    context.setTransform(1, 0, 0, 1, 0, 0);
+    context.scale(scaleFactor, scaleFactor);
+
+    drawWaveEffect(context, width, height);
+  }, [drawWaveEffect]);
+
+  const animateFooterLines = useCallback((): void => {
+    const canvas = canvasRef.current;
+    const context = contextRef.current;
+    
+    if (!canvas || !context) return;
+
+    const width = canvas.width / (window.devicePixelRatio || 1);
+    const height = canvas.height / (window.devicePixelRatio || 1);
+
+    updateLines(mouseRef.current.x, mouseRef.current.y);
+    drawLines(context, width, height);
+
+    animationFrameRef.current = requestAnimationFrame(animateFooterLines);
+  }, [drawLines]);
+
+  const waitForFonts = useCallback(async (): Promise<void> => {
+    if (document.fonts) {
+      try {
+        await document.fonts.load('1em Arial');
+      } catch (e) {
+        console.error('Error loading font:', e);
+      }
+    }
+    resizeCanvas();
+    animateFooterLines();
+  }, [resizeCanvas, animateFooterLines]);
+
+  const handleMouseMove = (e: MouseEvent): void => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    const rect = canvas.getBoundingClientRect();
+    mouseRef.current.x = e.clientX - rect.left;
+    mouseRef.current.y = e.clientY - rect.top;
+  };
+
+  const handleTouchMove = (e: TouchEvent): void => {
+    const canvas = canvasRef.current;
+    if (!canvas || !e.touches[0]) return;
+
+    const rect = canvas.getBoundingClientRect();
+    mouseRef.current.x = e.touches[0].clientX - rect.left;
+    mouseRef.current.y = e.touches[0].clientY - rect.top;
+  };
+
+  useEffect(() => {
+    // Set the foreground color on mount and on theme change
+    const setForeground = () => {
+      foregroundRef.current = getForegroundColor();
+    };
+    setForeground();
+
+    // Listen for theme changes (if using CSS custom properties that may change)
+    const observer = new MutationObserver(setForeground);
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['style', 'class'] });
+
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    const context = canvas.getContext('2d');
+    if (!context) return;
+
+    contextRef.current = context;
+    
+    // Handle resize with debouncing for better performance
+    let resizeTimeout: NodeJS.Timeout;
+    const handleResize = () => {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(() => {
+        resizeCanvas();
+      }, 100);
+    };
+
+    resizeCanvas();
+
+    window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('touchmove', handleTouchMove);
+    window.addEventListener('resize', handleResize);
+
+    waitForFonts();
+
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('touchmove', handleTouchMove);
+      window.removeEventListener('resize', handleResize);
+      clearTimeout(resizeTimeout);
+
+      if (animationFrameRef.current) {
+        cancelAnimationFrame(animationFrameRef.current);
+      }
+      observer.disconnect();
+    };
+  }, [resizeCanvas, waitForFonts]);
+
+  return (
+    <div 
+      ref={wrapperRef}
+      className="footer-hover-effect relative"
+      style={{
+        position: 'relative',
+        width: '100%',
+        height: typeof window !== 'undefined' ? (window.innerWidth < 768 ? '180px' : window.innerWidth < 1024 ? '220px' : '250px') : '250px', // Responsive height
+        overflow: 'hidden'
+      }}
+    >
+      <canvas
+        ref={canvasRef}
+        id="line-effect"
+        style={{
+          position: 'absolute',
+          display: 'block',
+          width: '100%',
+          height: '100%',
+          top: 0,
+          left: 0
+        }}
+        className="w-full h-full"
+      />
+    </div>
+  );
+};

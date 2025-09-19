@@ -1,5 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
+import SonicWaveformDivider from './ui/sonic-waveform-divider';
+import { EngravedString } from './ui/interactive-string';
 
 const About = () => {
   return (
@@ -31,30 +33,16 @@ const About = () => {
               </div>
             </div>
             <div className="order-1 lg:order-2 flex justify-center">
-              <div className="p-2 rounded-2xl">
-                <Image 
-                  src="/tedx-logo.png"
-                  alt="TEDx Speaker" 
-                  width={500} 
-                  height={500} 
-                  className="rounded-xl"
-                />
+              <div className="p-2 rounded-2xl w-full max-w-6xl">
+                <EngravedString text="TEDx VITAP" />
               </div>
             </div>
           </div>
         </div>
 
-        {/* Divider Section */}
-        <div className="flex items-center justify-center my-16">
-          <div className="flex items-center w-full max-w-4xl">
-            <div className="flex-1 h-px bg-gradient-to-r from-transparent via-white to-transparent"></div>
-            <div className="mx-8 flex items-center">
-              <div className="w-4 h-4 bg-red-500 rounded-full"></div>
-              <div className="w-2 h-2 bg-red-500/50 rounded-full mx-2"></div>
-              <div className="w-1 h-1 bg-red-500/30 rounded-full"></div>
-            </div>
-            <div className="flex-1 h-px bg-gradient-to-r from-transparent via-white to-transparent"></div>
-          </div>
+        {/* Sonic Waveform Divider Section */}
+        <div className="my-16">
+          <SonicWaveformDivider />
         </div>
 
         {/* About TEDxVITAP Section */}
@@ -77,6 +65,11 @@ const About = () => {
                   
                   About TEDxVITAP
                 </h3>
+                <div className="mb-4">
+                  <span className="inline-block px-3 py-1 bg-red-500/20 border border-red-500/30 rounded-full text-red-400 text-sm font-medium">
+                    Theme: Unfolding Possibilities
+                  </span>
+                </div>
                 <p className="text-gray-300 leading-relaxed mb-4">
                   TEDxVITAP is the official TEDx event at VIT-AP University, bringing together brilliant minds, innovative ideas, and inspiring stories from our campus and beyond.
                 </p>

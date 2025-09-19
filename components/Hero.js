@@ -6,6 +6,7 @@ import { gsap } from "gsap";
 import { SplitText } from "gsap/SplitText";
 import ShaderBackground from './ShaderBackground';
 import Image from 'next/image';
+import { GradientButton } from './ui/gradient-button';
 
 gsap.registerPlugin(SplitText);
 
@@ -120,10 +121,19 @@ const Hero = () => {
         </div>
 
         {/* Desktop links */}
-        <div ref={navLinksRef} className="hidden md:flex gap-6">
+        <div ref={navLinksRef} className="hidden md:flex gap-6 items-center">
           <a href="#about" onClick={(e) => handleScroll(e, 'about')} className="text-white transition-all hover:text-red-500 hover:font-bold">About us</a>
-          <a href="#team" onClick={(e) => handleScroll(e, 'team')} className="text-white transition-all hover:text-red-500 hover:font-bold">Our Team</a>
+          <a href="/team" className="text-white transition-all hover:text-red-500 hover:font-bold">Our Team</a>
           <a href="#sponsors" onClick={(e) => handleScroll(e, 'sponsors')} className="text-white transition-all hover:text-red-500 hover:font-bold">Sponsors</a>
+          <a 
+            href="https://events.vitap.ac.in/e/tedxvitap-19fffad5-b29a-49e9-b330-2595a0e06a4c" 
+            target="_blank" 
+            rel="noopener noreferrer"
+          >
+            <GradientButton className="min-w-[120px] px-6 py-2 text-sm rounded-full">
+              Register
+            </GradientButton>
+          </a>
         </div>
 
         {/* Mobile toggle */}
@@ -151,8 +161,20 @@ const Hero = () => {
         {open && (
           <div ref={mobileMenuRef} className="md:hidden absolute right-6 top-full mt-3 w-52 bg-black border border-gray-800 rounded-lg p-4 shadow-xl z-50">
             <a href="#about" onClick={(e) => handleScroll(e, 'about')} className="block text-white py-2 px-2 rounded hover:text-red-500 hover:font-bold transition-all">About us</a>
-            <a href="#team" onClick={(e) => handleScroll(e, 'team')} className="block text-white py-2 px-2 rounded hover:text-red-500 hover:font-bold transition-all">Our Team</a>
+            <a href="/team" className="block text-white py-2 px-2 rounded hover:text-red-500 hover:font-bold transition-all">Our Team</a>
             <a href="#sponsors" onClick={(e) => handleScroll(e, 'sponsors')} className="block text-white py-2 px-2 rounded hover:text-red-500 hover:font-bold transition-all">Sponsors</a>
+            <div className="mt-4 pt-4 border-t border-gray-700">
+              <a 
+                href="https://events.vitap.ac.in/e/tedxvitap-19fffad5-b29a-49e9-b330-2595a0e06a4c" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="block"
+              >
+                <GradientButton className="w-full min-w-[100px] px-4 py-2 text-sm rounded-full">
+                  Register
+                </GradientButton>
+              </a>
+            </div>
           </div>
         )}
       </nav>
@@ -213,9 +235,11 @@ const Hero = () => {
 
           <div className="flex items-center justify-center">
             <div className="w-full max-w-[500px] max-h-[500px]">
-              <img
+              <Image
                 src="/hero-video-unscreen.gif"
                 alt="Hero animation"
+                width={500}
+                height={500}
                 className="w-full h-full object-cover"
               />
             </div>

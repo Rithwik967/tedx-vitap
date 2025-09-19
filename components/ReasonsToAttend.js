@@ -36,7 +36,7 @@ const reasonsData = [
 export function ReasonsToAttend() {
   return (
     <DraggableCardContainer
-      className="relative h-200 flex min-h-screen w-full items-center justify-center overflow-clip bg-black">
+      className="relative h-200 flex min-h-screen w-full items-center justify-center overflow-hidden bg-black">
       
       {/* Main Heading for the section */}
       <div className="absolute top-24 md:top-32 left-1/2 -translate-x-1/2 text-center z-30 pointer-events-none">
@@ -58,7 +58,7 @@ export function ReasonsToAttend() {
       {/* Draggable Cards */}
       {reasonsData.map((item) => (
         <DraggableCardBody key={item.id} className={item.className}>
-          <div className="p-4 rounded-lg shadow-xl hover:bg-red-500">
+          <div className="p-4 rounded-lg shadow-xl hover:bg-red-500/20 transition-colors duration-300 cursor-grab active:cursor-grabbing">
             <Image
               src={item.image}
               alt={item.title}
@@ -67,7 +67,7 @@ export function ReasonsToAttend() {
               className="pointer-events-none relative z-10 h-64 w-64 md:h-80 md:w-80 rounded-md object-cover" 
             />
             <h3
-              className="mt-4 text-center text-xl md:text-2xl font-bold text-neutral-200">
+              className="mt-4 text-center text-xl md:text-2xl font-bold text-white">
               {item.title}
             </h3>
           </div>

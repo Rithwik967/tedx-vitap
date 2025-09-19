@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
-import { ChevronLeft, ChevronRight, X } from 'lucide-react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const members = [
     // Leadership Team
@@ -129,7 +129,6 @@ const members = [
 export default function TeamSection() {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isAutoScrolling, setIsAutoScrolling] = useState(true);
-    const [showFullTeam, setShowFullTeam] = useState(false);
     const [cardsPerView, setCardsPerView] = useState(5);
     
     // Responsive cards per view
@@ -191,9 +190,9 @@ export default function TeamSection() {
             <section className="py-12 md:py-24 bg-black relative">
                 <div className="mx-auto max-w-7xl px-4 lg:px-8">
                     <h2 className="mb-6 text-4xl font-bold md:mb-12 lg:text-5xl text-white text-center">
-                        Meet our <span className="text-ted-red">TEDxVITAP</span> team
+                        Meet our <span className="text-red-500">TEDxVITAP</span> team
                     </h2>
-                    <p className="text-gray-300 text-center mb-12 text-lg max-w-2xl mx-auto">
+                    <p className="text-red-500 text-center mb-12 text-lg max-w-2xl mx-auto">
                         Passionate individuals working together to bring you inspiring ideas and transformative experiences
                     </p>
 
@@ -202,7 +201,7 @@ export default function TeamSection() {
                         <button
                             onClick={prevSlide}
                             disabled={currentIndex === 0}
-                            className="absolute -left-4 top-1/2 -translate-y-1/2 z-10 bg-ted-red/80 hover:bg-ted-red disabled:opacity-30 disabled:cursor-not-allowed rounded-full p-3 transition-all duration-300 shadow-lg"
+                            className="absolute -left-4 top-1/2 -translate-y-1/2 z-10 bg-red-500/80 hover:bg-red-500 disabled:opacity-30 disabled:cursor-not-allowed rounded-full p-3 transition-all duration-300 shadow-lg"
                         >
                             <ChevronLeft className="w-6 h-6 text-white" />
                         </button>
@@ -210,7 +209,7 @@ export default function TeamSection() {
                         <button
                             onClick={nextSlide}
                             disabled={currentIndex >= maxIndex}
-                            className="absolute -right-4 top-1/2 -translate-y-1/2 z-10 bg-ted-red/80 hover:bg-ted-red disabled:opacity-30 disabled:cursor-not-allowed rounded-full p-3 transition-all duration-300 shadow-lg"
+                            className="absolute -right-4 top-1/2 -translate-y-1/2 z-10 bg-red-500/80 hover:bg-red-500 disabled:opacity-30 disabled:cursor-not-allowed rounded-full p-3 transition-all duration-300 shadow-lg"
                         >
                             <ChevronRight className="w-6 h-6 text-white" />
                         </button>
@@ -223,8 +222,8 @@ export default function TeamSection() {
                             >
                                 {members.map((member, index) => (
                                     <div key={`member-${member.name}-${index}`} className="flex-shrink-0 px-3" style={{ width: `${100 / cardsPerView}%` }}>
-                                        <div className="bg-gray-900 border border-gray-800 rounded-xl p-6 hover:border-ted-red transition-all duration-500 group hover:scale-105 hover:shadow-xl hover:shadow-ted-red/10">
-                                            <div className="bg-background size-28 rounded-full border-2 border-gray-700 p-1 shadow-lg shadow-black/30 mx-auto mb-4 group-hover:border-ted-red transition-colors duration-500">
+                                        <div className="bg-gray-900 border border-gray-800 rounded-xl p-6 hover:border-red-500 transition-all duration-500 group hover:scale-105 hover:shadow-xl hover:shadow-red-500/10">
+                                            <div className="bg-background size-28 rounded-full border-2 border-gray-700 p-1 shadow-lg shadow-black/30 mx-auto mb-4 group-hover:border-red-500 transition-colors duration-500">
                                                 <Image
                                                     className="aspect-square rounded-full object-cover"
                                                     src={member.avatar}
@@ -235,7 +234,7 @@ export default function TeamSection() {
                                                 />
                                             </div>
                                             <div className="text-center">
-                                                <h3 className="block text-lg font-semibold text-white group-hover:text-ted-red transition-colors duration-300 mb-1">
+                                                <h3 className="block text-lg font-semibold text-white group-hover:text-red-500 transition-colors duration-300 mb-1">
                                                     {member.name}
                                                 </h3>
                                                 <span className="text-gray-400 block text-sm">
@@ -256,7 +255,7 @@ export default function TeamSection() {
                                     onClick={() => goToSlide(index)}
                                     className={`h-2 rounded-full transition-all duration-300 ${
                                         index === currentIndex 
-                                            ? 'bg-ted-red w-8' 
+                                            ? 'bg-red-500 w-8' 
                                             : 'bg-gray-600 hover:bg-gray-400 w-2'
                                     }`}
                                 />
@@ -272,62 +271,17 @@ export default function TeamSection() {
                                 {isAutoScrolling ? 'Pause Auto-scroll' : 'Resume Auto-scroll'}
                             </button>
                             
-                            <button
-                                onClick={() => setShowFullTeam(true)}
-                                className="text-sm font-medium text-white bg-ted-red hover:bg-red-700 transition-colors duration-200 px-6 py-2 rounded-lg"
+                            <a
+                                href="/team"
+                                className="text-sm font-medium text-white bg-red-500 hover:bg-red-700 transition-colors duration-200 px-6 py-2 rounded-lg inline-block"
                             >
                                 View Full Team
-                            </button>
+                            </a>
                         </div>
                     </div>
                 </div>
             </section>
 
-            {/* Full Team Modal */}
-            {showFullTeam && (
-                <div className="fixed inset-0 bg-black/90 z-50 overflow-y-auto">
-                    <div className="min-h-screen px-4 py-12">
-                        <div className="max-w-6xl mx-auto">
-                            <div className="flex justify-between items-center mb-10">
-                                <h2 className="text-3xl md:text-4xl font-bold text-white">
-                                    Our <span className="text-ted-red">Full Team</span>
-                                </h2>
-                                <button
-                                    onClick={() => setShowFullTeam(false)}
-                                    className="text-gray-400 hover:text-white p-2 rounded-full hover:bg-gray-800 transition-colors"
-                                >
-                                    <X className="w-8 h-8" />
-                                </button>
-                            </div>
-                            
-                            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
-                                {members.map((member, index) => (
-                                    <div key={`full-member-${member.name}-${index}`} className="bg-gray-900 border border-gray-800 rounded-xl p-5 hover:border-ted-red transition-all duration-300 group">
-                                        <div className="bg-background size-24 rounded-full border-2 border-gray-700 p-1 shadow-lg shadow-black/30 mx-auto mb-4 group-hover:border-ted-red transition-colors duration-300">
-                                            <Image
-                                                className="aspect-square rounded-full object-cover"
-                                                src={member.avatar}
-                                                alt={member.name}
-                                                height="96"
-                                                width="96"
-                                                loading="lazy"
-                                            />
-                                        </div>
-                                        <div className="text-center">
-                                            <h3 className="block text-base font-semibold text-white group-hover:text-ted-red transition-colors duration-300 mb-1">
-                                                {member.name}
-                                            </h3>
-                                            <span className="text-gray-400 block text-sm">
-                                                {member.role}
-                                            </span>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            )}
         </>
     );
 }
