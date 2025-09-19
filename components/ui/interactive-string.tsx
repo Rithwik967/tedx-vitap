@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useCallback } from 'react';
 
 interface Point {
   x: number;
@@ -46,18 +46,18 @@ export const EngravedString: React.FC<EngravedStringProps> = ({ text }) => {
     { x: 0, y: 0 }, // bottom-left
   ]);
 
-  let horizontalPadding = 0;
-  let verticalPadding = 0;
-
   // Store the foreground color in a ref to avoid repeated lookups
   const foregroundRef = useRef<string>('#ff0000');
 
-  const drawWaveEffect = (
+  const drawWaveEffect = useCallback((
     context: CanvasRenderingContext2D,
     width: number,
     height: number
   ): void => {
     // Responsive padding for different screen sizes
+    let horizontalPadding = 0;
+    let verticalPadding = 0;
+    
     if (typeof window !== 'undefined') {
       if (window.innerWidth < 768) {
         // Mobile devices
@@ -186,7 +186,7 @@ export const EngravedString: React.FC<EngravedStringProps> = ({ text }) => {
         },
       ];
     }
-  };
+  }, [text]);
 
   const updateLines = (
     mouseX: number,
@@ -217,7 +217,40 @@ export const EngravedString: React.FC<EngravedStringProps> = ({ text }) => {
     });
   };
 
-  const drawLines = (
+  // Draws a plus sign at the given (x, y) position
+  const drawPlus = (
+    context: CanvasRenderingContext2D,
+    x: number,
+    y: number,
+    size: number = PLUS_SIZE,
+    color: string = '#ff0000',
+    lineWidth: number = 2
+  ) => {
+    const half = size / 2;
+    context.save();
+    context.strokeStyle = color;
+    context.lineWidth = lineWidth;
+    context.beginPath();
+    // Vertical line
+    context.moveTo(x, y - half);
+    context.lineTo(x, y + half);
+    // Horizontal line
+    context.moveTo(x - half, y);
+    context.lineTo(x + half, y);
+    context.stroke();
+    context.restore();
+  };
+
+  // Draw plus signs at the four corners
+  const drawPlusSigns = useCallback((context: CanvasRenderingContext2D) => {
+    if (!cornersRef.current) return;
+    const foreground = foregroundRef.current;
+    for (const corner of cornersRef.current) {
+      drawPlus(context, corner.x, corner.y, PLUS_SIZE, foreground, 2.2);
+    }
+  }, []);
+
+  const drawLines = useCallback((
     context: CanvasRenderingContext2D,
     width: number,
     height: number
@@ -247,42 +280,9 @@ export const EngravedString: React.FC<EngravedStringProps> = ({ text }) => {
 
     // Draw plus signs at the corners
     drawPlusSigns(context);
-  };
+  }, [drawPlusSigns]);
 
-  // Draws a plus sign at the given (x, y) position
-  const drawPlus = (
-    context: CanvasRenderingContext2D,
-    x: number,
-    y: number,
-    size: number = PLUS_SIZE,
-    color: string = '#ff0000',
-    lineWidth: number = 2
-  ) => {
-    const half = size / 2;
-    context.save();
-    context.strokeStyle = color;
-    context.lineWidth = lineWidth;
-    context.beginPath();
-    // Vertical line
-    context.moveTo(x, y - half);
-    context.lineTo(x, y + half);
-    // Horizontal line
-    context.moveTo(x - half, y);
-    context.lineTo(x + half, y);
-    context.stroke();
-    context.restore();
-  };
-
-  // Draw plus signs at the four corners
-  const drawPlusSigns = (context: CanvasRenderingContext2D) => {
-    if (!cornersRef.current) return;
-    const foreground = foregroundRef.current;
-    for (const corner of cornersRef.current) {
-      drawPlus(context, corner.x, corner.y, PLUS_SIZE, foreground, 2.2);
-    }
-  };
-
-  const resizeCanvas = (): void => {
+  const resizeCanvas = useCallback((): void => {
     const canvas = canvasRef.current;
     const context = contextRef.current;
     
@@ -300,9 +300,9 @@ export const EngravedString: React.FC<EngravedStringProps> = ({ text }) => {
     context.scale(scaleFactor, scaleFactor);
 
     drawWaveEffect(context, width, height);
-  };
+  }, [drawWaveEffect]);
 
-  const animateFooterLines = (): void => {
+  const animateFooterLines = useCallback((): void => {
     const canvas = canvasRef.current;
     const context = contextRef.current;
     
@@ -315,9 +315,9 @@ export const EngravedString: React.FC<EngravedStringProps> = ({ text }) => {
     drawLines(context, width, height);
 
     animationFrameRef.current = requestAnimationFrame(animateFooterLines);
-  };
+  }, [drawLines]);
 
-  const waitForFonts = async (): Promise<void> => {
+  const waitForFonts = useCallback(async (): Promise<void> => {
     if (document.fonts) {
       try {
         await document.fonts.load('1em Arial');
@@ -327,7 +327,7 @@ export const EngravedString: React.FC<EngravedStringProps> = ({ text }) => {
     }
     resizeCanvas();
     animateFooterLines();
-  };
+  }, [resizeCanvas, animateFooterLines]);
 
   const handleMouseMove = (e: MouseEvent): void => {
     const canvas = canvasRef.current;
