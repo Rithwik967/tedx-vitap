@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
 import { SplitText } from "gsap/SplitText";
@@ -15,6 +15,11 @@ const Hero = () => {
   const h1Ref = useRef(null);
   const pRef = useRef(null);
   const ctaRef = useRef(null);
+  const navbarRef = useRef(null);
+  const logoRef = useRef(null);
+  const navLinksRef = useRef(null);
+  const mobileMenuRef = useRef(null);
+  const [open, setOpen] = useState(false);
 
   const scrollToEvents = (e) => {
     e.preventDefault();
@@ -27,14 +32,26 @@ const Hero = () => {
     }
   };
 
+  const handleScroll = (e, id) => {
+    e.preventDefault();
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
+    setOpen(false);
+  };
+
   useGSAP(
     () => {
       const ctas = ctaRef.current ? Array.from(ctaRef.current.children) : [];
+      const navLinks = navLinksRef.current ? Array.from(navLinksRef.current.children) : [];
 
       const h1Split = new SplitText(h1Ref.current, { type: "lines" });
       const pSplit = new SplitText(pRef.current, { type: "lines" });
 
+      // Set initial states
       gsap.set(bgRef.current, { filter: "blur(28px)" });
+      gsap.set(navbarRef.current, { y: -100, opacity: 0 });
+      gsap.set(logoRef.current, { scale: 0.8, opacity: 0 });
+      gsap.set(navLinks, { opacity: 0, y: -20 });
       gsap.set(h1Split.lines, {
         opacity: 0,
         y: 24,
@@ -48,7 +65,14 @@ const Hero = () => {
       if (ctas.length) gsap.set(ctas, { opacity: 0, y: 16 });
 
       const tl = gsap.timeline({ defaults: { ease: "power2.out" } });
-      tl.to(bgRef.current, { filter: "blur(0px)", duration: 1.2 }, 0)
+      
+      // Animate navbar first
+      tl.to(navbarRef.current, { y: 0, opacity: 1, duration: 0.8 }, 0)
+        .to(logoRef.current, { scale: 1, opacity: 1, duration: 0.6 }, 0.2)
+        .to(navLinks, { opacity: 1, y: 0, duration: 0.5, stagger: 0.1 }, 0.4)
+        // Then animate background
+        .to(bgRef.current, { filter: "blur(0px)", duration: 1.2 }, 0.5)
+        // Then animate content
         .to(
           h1Split.lines,
           {
@@ -58,7 +82,7 @@ const Hero = () => {
             duration: 0.8,
             stagger: 0.1,
           },
-          0.3,
+          0.8,
         )
         .to(
           pSplit.lines,
@@ -83,6 +107,56 @@ const Hero = () => {
 
   return (
     <section ref={rootRef} className="relative min-h-screen w-full overflow-hidden bg-red-500 text-white">
+      {/* Navbar */}
+      <nav ref={navbarRef} className="absolute top-0 left-0 right-0 z-20 flex justify-between items-center p-6 max-w-7xl mx-auto">
+        <div className="flex items-center">
+          <Image
+            ref={logoRef}
+            src="/logo-white.png"
+            alt="TEDx VITAP"
+            width={160}
+            height={60}
+          />
+        </div>
+
+        {/* Desktop links */}
+        <div ref={navLinksRef} className="hidden md:flex gap-6">
+          <a href="#about" onClick={(e) => handleScroll(e, 'about')} className="text-white transition-all hover:text-red-500 hover:font-bold">About us</a>
+          <a href="#team" onClick={(e) => handleScroll(e, 'team')} className="text-white transition-all hover:text-red-500 hover:font-bold">Our Team</a>
+          <a href="#sponsors" onClick={(e) => handleScroll(e, 'sponsors')} className="text-white transition-all hover:text-red-500 hover:font-bold">Sponsors</a>
+        </div>
+
+        {/* Mobile toggle */}
+        <button
+          type="button"
+          aria-label="Toggle menu"
+          aria-expanded={open}
+          onClick={() => setOpen((s) => !s)}
+          className="md:hidden inline-flex items-center justify-center p-2 rounded-md text-white hover:text-red-500 focus:outline-none"
+        >
+          {open ? (
+            // close icon
+            <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          ) : (
+            // hamburger icon
+            <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          )}
+        </button>
+
+        {/* Mobile menu */}
+        {open && (
+          <div ref={mobileMenuRef} className="md:hidden absolute right-6 top-full mt-3 w-52 bg-black border border-gray-800 rounded-lg p-4 shadow-xl z-50">
+            <a href="#about" onClick={(e) => handleScroll(e, 'about')} className="block text-white py-2 px-2 rounded hover:text-red-500 hover:font-bold transition-all">About us</a>
+            <a href="#team" onClick={(e) => handleScroll(e, 'team')} className="block text-white py-2 px-2 rounded hover:text-red-500 hover:font-bold transition-all">Our Team</a>
+            <a href="#sponsors" onClick={(e) => handleScroll(e, 'sponsors')} className="block text-white py-2 px-2 rounded hover:text-red-500 hover:font-bold transition-all">Sponsors</a>
+          </div>
+        )}
+      </nav>
+
       {/* Shader background */}
       <div className="absolute inset-0" ref={bgRef}>
         <div className="h-full w-full bg-gradient-to-br from-red-600 via-red-500 to-red-700">
@@ -139,14 +213,10 @@ const Hero = () => {
 
           <div className="flex items-center justify-center">
             <div className="w-full max-w-[500px] max-h-[500px]">
-              <video
-                src="/hero-video.mp4"
-                autoPlay
-                muted
-                loop
-                playsInline
+              <img
+                src="/hero-video-unscreen.gif"
+                alt="Hero animation"
                 className="w-full h-full object-cover"
-                aria-label="Hero video"
               />
             </div>
           </div>

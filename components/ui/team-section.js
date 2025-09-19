@@ -5,45 +5,58 @@ import Image from 'next/image';
 import { ChevronLeft, ChevronRight, X } from 'lucide-react';
 
 const members = [
+    // Leadership Team
     {
-        name: 'Jnana Maanasa Devi Veligotla',
-        role: 'Organizer',
-        avatar: '/Team/2169818.png',
+        name: 'Surya Lavanya Manne',
+        role: 'SCOPE',
+        avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=300&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8cGVvcGxlfGVufDB8fDB8fHww',
     },
     {
-        name: 'Thummanapelli Vaishnavi',
-        role: 'Co-Organizer',
-        avatar: '/Team/vaishnavi.jpg',
-    },
-    {
-        name: 'Lalith',
-        role: 'Co-Organizer',
+        name: 'Karri Naga Venkata Jayanth Manikanta',
+        role: 'Director of Editorial',
         avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHBlb3BsZXxlbnwwfHwwfHx8MA%3D%3D',
     },
     {
-        name: 'Lavanya',
-        role: 'Curator',
+        name: 'Uthra Balakrishna',
+        role: 'Director of Communications',
         avatar: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=300&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjZ8fHBlb3BsZXxlbnwwfHwwfHx8MA%3D%3D',
     },
     {
-        name: 'Mahitha',
+        name: 'Krishna Nand Jha',
+        role: 'Director of Marketing',
+        avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHBlb3BsZXxlbnwwfHwwfHx8MA%3D%3D',
+    },
+    {
+        name: 'Baddila Jayanth',
+        role: 'Director of Editorial',
+        avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDZ8fHBlb3BsZXxlbnwwfHwwfHx8MA%3D%3D',
+    },
+    {
+        name: 'K.N.B.NAVANEETH KUMAR',
+        role: 'Video and Production Lead',
+        avatar: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=300&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTZ8fHBlb3BsZXxlbnwwfHwwfHx8MA%3D%3D',
+    },
+    {
+        name: 'N Jahnavi',
+        role: 'Executive Producer',
+        avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=300&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDl8fHBlb3BsZXxlbnwwfHwwfHx8MA%3D%3D',
+    },
+    {
+        name: 'Mahita Inaparthy',
         role: 'Curator',
         avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=300&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cGVvcGxlfGVufDB8fDB8fHww',
     },
     {
-        name: 'Akshay',
-        role: 'Website Manager',
-        avatar: '/Team/akshay.png',
+        name: 'Manchimsetti Vyshnavi',
+        role: 'Budget Manager',
+        avatar: 'https://images.unsplash.com/photo-1522556189639-b150ed9c4330?w=300&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzB8fHBlb3BsZXxlbnwwfHwwfHx8MA%3D%3D',
     },
+    
+    // Event Management Team
     {
-        name: 'Rithwik',
-        role: 'Executive Producer',
-        avatar: '/Team/rithwik.png',
-    },
-    {
-        name: 'Jahnavi',
-        role: 'Executive Producer',
-        avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=300&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDl8fHBlb3BsZXxlbnwwfHwwfHx8MA%3D%3D',
+        name: 'Vallabh S Ghantasala',
+        role: 'Event Manager',
+        avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDZ8fHBlb3BsZXxlbnwwfHwwfHx8MA%3D%3D',
     },
     {
         name: 'Sangani Sathwik',
@@ -51,93 +64,64 @@ const members = [
         avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDZ8fHBlb3BsZXxlbnwwfHwwfHx8MA%3D%3D',
     },
     {
-        name: 'Amrutha',
-        role: 'Event Manager',
+        name: 'Amrutha Suggula',
+        role: 'CSE',
         avatar: 'https://images.unsplash.com/photo-1522556189639-b150ed9c4330?w=300&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzB8fHBlb3BsZXxlbnwwfHwwfHx8MA%3D%3D',
     },
     {
-        name: 'Klarika',
-        role: 'Event Manager',
+        name: 'Cherukuri Laxmi Kamali Klarika',
+        role: 'Computer Science with Business Systems (CSBS)',
         avatar: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=300&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8cGVvcGxlfGVufDB8fDB8fHww',
     },
+    
+    // Technical Team
     {
-        name: 'Sai Sravan',
-        role: 'Videography',
-        avatar: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=300&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTZ8fHBlb3BsZXxlbnwwfHwwfHx8MA%3D%3D',
+        name: 'Allenki Akshay',
+        role: 'Website Manager',
+        avatar: '/Team/akshay.png',
     },
     {
-        name: 'Designer',
+        name: 'Sai Sravan Tanguturi',
+        role: 'Coverage',
+        avatar: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=300&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTZ8fHBlb3BsZXxlbnwwfHwwfHx8MA%3D%3D',
+    },
+    
+    // Design Team
+    {
+        name: 'VISHNU VARDHAN SETTIPALLI',
+        role: 'Designer',
+        avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=300&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8cGVvcGxlfGVufDB8fDB8fHww',
+    },
+    {
+        name: 'Nehthan Abhishek',
         role: 'Design Team',
-        avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=300&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8cGVvcGxlfGVufDB8fDB8fHww',
+        avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHBlb3BsZXxlbnwwfHwwfHx8MA%3D%3D',
     },
+    
+    // Operations Team
     {
-        name: 'Marketing Lead',
-        role: 'Marketing',
-        avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHBlb3BsZXxlbnwwfHwwfHx8MA%3D%3D',
-    },
-    {
-        name: 'Content Creator',
-        role: 'Content Team',
+        name: 'Neha Sreedhar',
+        role: 'Stage Decorations and Resource Management',
         avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=300&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fHBlb3BsZXxlbnwwfHwwfHx8MA%3D%3D',
     },
     {
-        name: 'Social Media',
-        role: 'Social Media',
+        name: 'Tejaswi Cherukumalli',
+        role: 'Guest Care',
         avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHBlb3BsZXxlbnwwfHwwfHx8MA%3D%3D',
     },
     {
-        name: 'Photographer',
-        role: 'Photography',
+        name: 'Chejarla Shanmukha Keerthana',
+        role: 'Guest Care',
         avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDZ8fHBlb3BsZXxlbnwwfHwwfHx8MA%3D%3D',
     },
     {
-        name: 'Volunteer 1',
-        role: 'Volunteer',
+        name: 'Sreeja joshi',
+        role: 'Registrations',
         avatar: 'https://images.unsplash.com/photo-1522556189639-b150ed9c4330?w=300&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzB8fHBlb3BsZXxlbnwwfHwwfHx8MA%3D%3D',
     },
     {
-        name: 'Volunteer 2',
-        role: 'Volunteer',
-        avatar: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=300&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8cGVvcGxlfGVufDB8fDB8fHww',
-    },
-    {
-        name: 'Volunteer 3',
-        role: 'Volunteer',
-        avatar: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=300&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTZ8fHBlb3BsZXxlbnwwfHwwfHx8MA%3D%3D',
-    },
-    {
-        name: 'Volunteer 4',
-        role: 'Volunteer',
-        avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=300&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8cGVvcGxlfGVufDB8fDB8fHww',
-    },
-    {
-        name: 'Volunteer 5',
-        role: 'Volunteer',
-        avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHBlb3BsZXxlbnwwfHwwfHx8MA%3D%3D',
-    },
-    {
-        name: 'Volunteer 6',
-        role: 'Volunteer',
-        avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=300&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fHBlb3BsZXxlbnwwfHwwfHx8MA%3D%3D',
-    },
-    {
-        name: 'Volunteer 7',
-        role: 'Volunteer',
-        avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHBlb3BsZXxlbnwwfHwwfHx8MA%3D%3D',
-    },
-    {
-        name: 'Volunteer 8',
-        role: 'Volunteer',
-        avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDZ8fHBlb3BsZXxlbnwwfHwwfHx8MA%3D%3D',
-    },
-    {
-        name: 'Volunteer 9',
-        role: 'Volunteer',
-        avatar: 'https://images.unsplash.com/photo-1522556189639-b150ed9c4330?w=300&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzB8fHBlb3BsZXxlbnwwfHwwfHx8MA%3D%3D',
-    },
-    {
-        name: 'Volunteer 10',
-        role: 'Volunteer',
+        name: '22BCE8088',
+        role: 'Registrations',
         avatar: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=300&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8cGVvcGxlfGVufDB8fDB8fHww',
     },
 ];
