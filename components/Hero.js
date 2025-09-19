@@ -213,9 +213,11 @@ const Hero = () => {
 
           <div className="flex items-center justify-center">
             <div className="w-full max-w-[500px] max-h-[500px]">
-              <img
+              <Image
                 src="/hero-video-unscreen.gif"
                 alt="Hero animation"
+                width={500}
+                height={500}
                 className="w-full h-full object-cover"
               />
             </div>

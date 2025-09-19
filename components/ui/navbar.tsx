@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
@@ -16,21 +17,21 @@ const Navbar = () => {
   return (
     <nav className="absolute top-0 left-0 right-0 z-20 flex justify-between items-center p-6 max-w-7xl mx-auto">
       <div className="flex items-center">
-        <a href="/">
+        <Link href="/">
           <Image
             src="/logo-white.png"
             alt="TEDx VITAP"
             width={160}
             height={60}
           />
-        </a>
+        </Link>
       </div>
 
       {/* Desktop links */}
       <div className="hidden md:flex gap-6">
-        <a href="/#about" className="text-white transition-all hover:text-red-500 hover:font-bold">About us</a>
-        <a href="/team" className="text-white transition-all hover:text-red-500 hover:font-bold">Our Team</a>
-        <a href="/#sponsors" className="text-white transition-all hover:text-red-500 hover:font-bold">Sponsors</a>
+        <Link href="/#about" className="text-white transition-all hover:text-red-500 hover:font-bold">About us</Link>
+        <Link href="/team" className="text-white transition-all hover:text-red-500 hover:font-bold">Our Team</Link>
+        <Link href="/#sponsors" className="text-white transition-all hover:text-red-500 hover:font-bold">Sponsors</Link>
       </div>
 
       {/* Mobile toggle */}
@@ -57,9 +58,9 @@ const Navbar = () => {
       {/* Mobile menu */}
       {open && (
         <div className="md:hidden absolute right-6 top-full mt-3 w-52 bg-black border border-gray-800 rounded-lg p-4 shadow-xl z-50">
-          <a href="/#about" className="block text-white py-2 px-2 rounded hover:text-red-500 hover:font-bold transition-all">About us</a>
-          <a href="/team" className="block text-white py-2 px-2 rounded hover:text-red-500 hover:font-bold transition-all">Our Team</a>
-          <a href="/#sponsors" className="block text-white py-2 px-2 rounded hover:text-red-500 hover:font-bold transition-all">Sponsors</a>
+          <Link href="/#about" className="block text-white py-2 px-2 rounded hover:text-red-500 hover:font-bold transition-all">About us</Link>
+          <Link href="/team" className="block text-white py-2 px-2 rounded hover:text-red-500 hover:font-bold transition-all">Our Team</Link>
+          <Link href="/#sponsors" className="block text-white py-2 px-2 rounded hover:text-red-500 hover:font-bold transition-all">Sponsors</Link>
         </div>
       )}
     </nav>

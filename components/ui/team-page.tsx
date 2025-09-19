@@ -209,7 +209,7 @@ export default function TeamPage() {
                     <div className="grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
                         {leadershipMembers.map((member, index) => (
                             <div key={index} className="group overflow-hidden">
-                                <img 
+                                <Image 
                                     className="h-96 w-full rounded-md object-cover object-top grayscale transition-all duration-500 hover:grayscale-0 group-hover:h-[22.5rem] group-hover:rounded-xl" 
                                     src={member.avatar} 
                                     alt="team member" 
@@ -240,7 +240,7 @@ export default function TeamPage() {
                     <div className="grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
                         {managementMembers.map((member, index) => (
                             <div key={index} className="group overflow-hidden">
-                                <img 
+                                <Image 
                                     className="h-96 w-full rounded-md object-cover object-top grayscale transition-all duration-500 hover:grayscale-0 group-hover:h-[22.5rem] group-hover:rounded-xl" 
                                     src={member.avatar} 
                                     alt="team member" 
@@ -271,7 +271,7 @@ export default function TeamPage() {
                     <div className="grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
                         {creativeMembers.map((member, index) => (
                             <div key={index} className="group overflow-hidden">
-                                <img 
+                                <Image 
                                     className="h-96 w-full rounded-md object-cover object-top grayscale transition-all duration-500 hover:grayscale-0 group-hover:h-[22.5rem] group-hover:rounded-xl" 
                                     src={member.avatar} 
                                     alt="team member" 
@@ -302,7 +302,7 @@ export default function TeamPage() {
                     <div className="grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
                         {marketingMembers.map((member, index) => (
                             <div key={index} className="group overflow-hidden">
-                                <img 
+                                <Image 
                                     className="h-96 w-full rounded-md object-cover object-top grayscale transition-all duration-500 hover:grayscale-0 group-hover:h-[22.5rem] group-hover:rounded-xl" 
                                     src={member.avatar} 
                                     alt="team member" 
@@ -333,7 +333,7 @@ export default function TeamPage() {
                     <div className="grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
                         {volunteerMembers.map((member, index) => (
                             <div key={index} className="group overflow-hidden">
-                                <img 
+                                <Image 
                                     className="h-96 w-full rounded-md object-cover object-top grayscale transition-all duration-500 hover:grayscale-0 group-hover:h-[22.5rem] group-hover:rounded-xl" 
                                     src={member.avatar} 
                                     alt="team member" 

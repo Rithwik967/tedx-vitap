@@ -58,16 +58,22 @@ export const EngravedString: React.FC<EngravedStringProps> = ({ text }) => {
     height: number
   ): void => {
     // Responsive padding for different screen sizes
-    if (window.innerWidth < 768) {
-      // Mobile devices
-      horizontalPadding = width * 0.02;
-      verticalPadding = height * 0.05;
-    } else if (window.innerWidth < 1024) {
-      // Tablet devices
-      horizontalPadding = width * 0.03;
-      verticalPadding = height * 0.08;
+    if (typeof window !== 'undefined') {
+      if (window.innerWidth < 768) {
+        // Mobile devices
+        horizontalPadding = width * 0.02;
+        verticalPadding = height * 0.05;
+      } else if (window.innerWidth < 1024) {
+        // Tablet devices
+        horizontalPadding = width * 0.03;
+        verticalPadding = height * 0.08;
+      } else {
+        // Desktop devices
+        horizontalPadding = width * 0.1;
+        verticalPadding = height * 0.1;
+      }
     } else {
-      // Desktop devices
+      // Default for SSR
       horizontalPadding = width * 0.1;
       verticalPadding = height * 0.1;
     }
@@ -80,18 +86,25 @@ export const EngravedString: React.FC<EngravedStringProps> = ({ text }) => {
     // Responsive text canvas dimensions
     let typeCanvasWidth, typeCanvasHeight, fontSize;
     
-    if (window.innerWidth < 768) {
-      // Mobile devices - smaller canvas and font
-      typeCanvasWidth = 280;
-      typeCanvasHeight = 60;
-      fontSize = typeCanvasWidth * 0.14;
-    } else if (window.innerWidth < 1024) {
-      // Tablet devices - medium canvas and font
-      typeCanvasWidth = 320;
-      typeCanvasHeight = 70;
-      fontSize = typeCanvasWidth * 0.13;
+    if (typeof window !== 'undefined') {
+      if (window.innerWidth < 768) {
+        // Mobile devices - smaller canvas and font
+        typeCanvasWidth = 280;
+        typeCanvasHeight = 60;
+        fontSize = typeCanvasWidth * 0.14;
+      } else if (window.innerWidth < 1024) {
+        // Tablet devices - medium canvas and font
+        typeCanvasWidth = 320;
+        typeCanvasHeight = 70;
+        fontSize = typeCanvasWidth * 0.13;
+      } else {
+        // Desktop devices - larger canvas and font
+        typeCanvasWidth = 350;
+        typeCanvasHeight = 80;
+        fontSize = typeCanvasWidth * 0.12;
+      }
     } else {
-      // Desktop devices - larger canvas and font
+      // Default for SSR
       typeCanvasWidth = 350;
       typeCanvasHeight = 80;
       fontSize = typeCanvasWidth * 0.12;
@@ -381,7 +394,7 @@ export const EngravedString: React.FC<EngravedStringProps> = ({ text }) => {
       }
       observer.disconnect();
     };
-  }, []);
+  }, [resizeCanvas, waitForFonts]);
 
   return (
     <div 
@@ -390,7 +403,7 @@ export const EngravedString: React.FC<EngravedStringProps> = ({ text }) => {
       style={{
         position: 'relative',
         width: '100%',
-        height: window.innerWidth < 768 ? '180px' : window.innerWidth < 1024 ? '220px' : '250px', // Responsive height
+        height: typeof window !== 'undefined' ? (window.innerWidth < 768 ? '180px' : window.innerWidth < 1024 ? '220px' : '250px') : '250px', // Responsive height
         overflow: 'hidden'
       }}
     >
