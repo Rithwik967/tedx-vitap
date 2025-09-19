@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { GradientButton } from './gradient-button';
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
@@ -28,10 +29,19 @@ const Navbar = () => {
       </div>
 
       {/* Desktop links */}
-      <div className="hidden md:flex gap-6">
+      <div className="hidden md:flex gap-6 items-center">
         <Link href="/#about" className="text-white transition-all hover:text-red-500 hover:font-bold">About us</Link>
         <Link href="/team" className="text-white transition-all hover:text-red-500 hover:font-bold">Our Team</Link>
         <Link href="/#sponsors" className="text-white transition-all hover:text-red-500 hover:font-bold">Sponsors</Link>
+        <a 
+          href="https://events.vitap.ac.in/e/tedxvitap-19fffad5-b29a-49e9-b330-2595a0e06a4c" 
+          target="_blank" 
+          rel="noopener noreferrer"
+        >
+          <GradientButton className="min-w-[120px] px-6 py-2 text-sm rounded-full">
+            Register
+          </GradientButton>
+        </a>
       </div>
 
       {/* Mobile toggle */}
@@ -61,6 +71,18 @@ const Navbar = () => {
           <Link href="/#about" className="block text-white py-2 px-2 rounded hover:text-red-500 hover:font-bold transition-all">About us</Link>
           <Link href="/team" className="block text-white py-2 px-2 rounded hover:text-red-500 hover:font-bold transition-all">Our Team</Link>
           <Link href="/#sponsors" className="block text-white py-2 px-2 rounded hover:text-red-500 hover:font-bold transition-all">Sponsors</Link>
+          <div className="mt-4 pt-4 border-t border-gray-700">
+            <a 
+              href="https://events.vitap.ac.in/e/tedxvitap-19fffad5-b29a-49e9-b330-2595a0e06a4c" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="block"
+            >
+              <GradientButton className="w-full min-w-[100px] px-4 py-2 text-sm rounded-full">
+                Register
+              </GradientButton>
+            </a>
+          </div>
         </div>
       )}
     </nav>

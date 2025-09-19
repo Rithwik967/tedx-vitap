@@ -11,9 +11,14 @@ const Events = () => {
                 <h3 className="text-4xl font-bold text-ted-red">TEDx VITAP</h3>
                 <p className="text-lg text-gray-400 mt-2">27TH SEPTEMBER 2025</p>
                 <p className="mt-4 text-gray-300">Join us for a day of brilliant speakers, thought-provoking ideas, and mind-opening conversations.</p>
-                <button className="mt-8 px-8 py-3 border border-red-500 text-red-500 font-semibold rounded-full hover:bg-red-500 hover:text-white transition-colors">
+                <a 
+                    href="https://events.vitap.ac.in/e/tedxvitap-19fffad5-b29a-49e9-b330-2595a0e06a4c" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="mt-8 px-8 py-3 border border-red-500 text-red-500 font-semibold rounded-full hover:bg-red-500 hover:text-white transition-colors inline-block"
+                >
                     Register
-                </button>
+                </a>
             </div>
             <div className="flex justify-center">
                  {/* You can create a logo or graphic for your event */}
