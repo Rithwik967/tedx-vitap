@@ -10,7 +10,7 @@ export default function ContactUs() {
             </h1>
             <p className="text-left mt-4 text-gray-300">
                 Or just reach out manually to{" "}
-                <a href="mailto:tedxvitap@vitap.ac.in" className="text-red-500 hover:underline">tedxvitap@vitap.ac.in</a>
+                <a href="mailto:tedx@vitap.ac.in" className="text-red-500 hover:underline">tedxvitap@vitap.ac.in</a>
             </p>
             <div className="grid md:grid-cols-3 mt-16 gap-8">
                 <div>
