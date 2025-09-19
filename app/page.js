@@ -4,7 +4,8 @@ import About from "@/components/About";
 import ReasonsToAttend from "@/components/ReasonsToAttend";
 import Events from "@/components/Events";
 import Team from "@/components/Team";
-//import Sponsors from "@/components/Sponsors";
+import CallToAction from "@/components/ui/call-to-action-1";
+import ContactUs from "@/components/ui/contact-us";
 import Footer from "@/components/Footer";
 import PreviousSpeakers from "@/components/PreviousSpeakers";
 
@@ -33,6 +34,17 @@ export default function Home() {
       <Events />
       <PreviousSpeakers />
       <Team />
+      
+      {/* Call to Action Section */}
+      <section className="py-20 px-6 bg-black">
+        <CallToAction />
+      </section>
+      
+      {/* Contact Us Section */}
+      <section id="contact" className="py-20 bg-black">
+        <ContactUs />
+      </section>
+      
       <Footer />
     </main>
   );

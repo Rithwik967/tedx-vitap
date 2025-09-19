@@ -5,10 +5,11 @@ import Image from 'next/image';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const members = [
+    // Leadership Team
     {
-        name: 'Jnana Maanasa Devi Veligotla',
-        role: 'Organizer',
-        avatar: '/Team/2169818.png',
+        name: 'V.J.Maanasa Devi',
+        role: 'Lead Organizer (Licensee)',
+        avatar: '/TEAM CORE/Maanasa.jpg',
     },
     {
         name: 'Thummanapelli Vaishnavi',
@@ -16,129 +17,164 @@ const members = [
         avatar: '/Team/vaishnavi.jpg',
     },
     {
-        name: 'Lalith',
+        name: 'R.V.Laleeth Sai',
         role: 'Co-Organizer',
-        avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHBlb3BsZXxlbnwwfHwwfHx8MA%3D%3D',
+        avatar: '/TEAM CORE/Laleeth_Photo.jpg',
     },
     {
-        name: 'Lavanya',
+        name: 'Lavanya Manne',
         role: 'Curator',
-        avatar: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=300&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjZ8fHBlb3BsZXxlbnwwfHwwfHx8MA%3D%3D',
+        avatar: '/TEAM CORE/SURYA LAVANYA MANNE.jpg',
     },
     {
-        name: 'Mahitha',
+        name: 'Inaparthy Sri Sai Mahita',
         role: 'Curator',
-        avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=300&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cGVvcGxlfGVufDB8fDB8fHww',
+        avatar: '/TEAM CORE/Mahita.jpg',
     },
+    
+    // Executive Team
     {
-        name: 'Akshay',
-        role: 'Website Manager',
-        avatar: '/Team/akshay.png',
-    },
-    {
-        name: 'Rithwik',
+        name: 'Rithwik Sthambamkadi',
         role: 'Executive Producer',
         avatar: '/Team/rithwik.png',
     },
     {
-        name: 'Jahnavi',
+        name: 'Nallagatla Jahnavi',
         role: 'Executive Producer',
-        avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=300&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDl8fHBlb3BsZXxlbnwwfHwwfHx8MA%3D%3D',
+        avatar: '/TEAM CORE/N Jahnavi.jpeg',
     },
     {
         name: 'Sangani Sathwik',
         role: 'Event Manager',
-        avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDZ8fHBlb3BsZXxlbnwwfHwwfHx8MA%3D%3D',
+        avatar: '/TEAM CORE/SANGANI SATHWIK.jpg',
     },
     {
-        name: 'Amrutha',
+        name: 'Amrutha Suggula',
         role: 'Event Manager',
-        avatar: 'https://images.unsplash.com/photo-1522556189639-b150ed9c4330?w=300&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzB8fHBlb3BsZXxlbnwwfHwwfHx8MA%3D%3D',
+        avatar: '/TEAM CORE/SUGGULA AMRUTHA.jpg',
     },
     {
-        name: 'Klarika',
+        name: 'Vallabh S Ghantasala',
         role: 'Event Manager',
-        avatar: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=300&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8cGVvcGxlfGVufDB8fDB8fHww',
+        avatar: '/TEAM CORE/VALLABH S GHANTASALA.jpg',
     },
     {
-        name: 'Sai Sravan',
-        role: 'Videography',
-        avatar: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=300&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTZ8fHBlb3BsZXxlbnwwfHwwfHx8MA%3D%3D',
+        name: 'Klarika Cherukuri',
+        role: 'Event Manager',
+        avatar: '/TEAM CORE/CHERUKURI KLARIKA.jpg',
     },
     {
-        name: 'Designer',
-        role: 'Design Team',
-        avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=300&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8cGVvcGxlfGVufDB8fDB8fHww',
+        name: 'Manchimsetti Vyshnavi',
+        role: 'Budget Manager',
+        avatar: '/TEAM CORE/MANCHIMSETTI VYSHNAVI.jpg',
+    },
+    
+    // Creative Team
+    {
+        name: 'Nehthan Abhishek',
+        role: 'Designer',
+        avatar: '/TEAM CORE/NEHTHAN ABHISHEK.jpeg',
     },
     {
-        name: 'Marketing Lead',
-        role: 'Marketing',
-        avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHBlb3BsZXxlbnwwfHwwfHx8MA%3D%3D',
+        name: 'Vishnu',
+        role: 'Designer',
+        avatar: '/TEAM CORE/VISHNU VARDHAN SETTIPALLI.JPG',
     },
     {
-        name: 'Content Creator',
-        role: 'Content Team',
-        avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=300&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fHBlb3BsZXxlbnwwfHwwfHx8MA%3D%3D',
+        name: 'Dharmika Sai Pavuluri',
+        role: 'Designer',
+        avatar: '/TEAM CORE/Dharmika.jpg',
     },
     {
-        name: 'Social Media',
-        role: 'Social Media',
-        avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHBlb3BsZXxlbnwwfHwwfHx8MA%3D%3D',
+        name: 'Sai Sravan Tanguturi',
+        role: 'Video and Production Lead',
+        avatar: '/TEAM CORE/SAI SRAVAN.jpg',
     },
     {
-        name: 'Photographer',
-        role: 'Photography',
-        avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDZ8fHBlb3BsZXxlbnwwfHwwfHx8MA%3D%3D',
+        name: 'K.N.B. Navaneeth Kumar',
+        role: 'Video and Production Lead',
+        avatar: '/TEAM CORE/NAVANEETH KUMAR.jpg',
     },
     {
-        name: 'Volunteer 1',
-        role: 'Volunteer',
-        avatar: 'https://images.unsplash.com/photo-1522556189639-b150ed9c4330?w=300&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzB8fHBlb3BsZXxlbnwwfHwwfHx8MA%3D%3D',
+        name: 'Neha Sreedhar',
+        role: 'Stage Decorations & Resource Management',
+        avatar: '/TEAM CORE/NEHA SREEDHAR.jpeg',
     },
     {
-        name: 'Volunteer 2',
-        role: 'Volunteer',
-        avatar: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=300&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8cGVvcGxlfGVufDB8fDB8fHww',
+        name: 'Dheeraj',
+        role: 'Stage Decorations & Resource Management',
+        avatar: '/TEAM CORE/dheeraj.jpeg',
     },
     {
-        name: 'Volunteer 3',
-        role: 'Volunteer',
-        avatar: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=300&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTZ8fHBlb3BsZXxlbnwwfHwwfHx8MA%3D%3D',
+        name: 'Somireddy Gnanapreetham Reddy',
+        role: 'Stage Decorations & Resource Management',
+        avatar: '/TEAM CORE/preetham.jpeg',
+    },
+    
+    // Communications & Marketing Team
+    {
+        name: 'Uthra Balakrishna',
+        role: 'Director of Communications',
+        avatar: '/TEAM CORE/UTHRA BALAKRISHNA.jpg',
     },
     {
-        name: 'Volunteer 4',
-        role: 'Volunteer',
-        avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=300&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8cGVvcGxlfGVufDB8fDB8fHww',
+        name: 'Jayanth Manikanta',
+        role: 'Director of Editorial',
+        avatar: '/TEAM CORE/JAYANTH MANIKANTA.jpg',
     },
     {
-        name: 'Volunteer 5',
-        role: 'Volunteer',
-        avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHBlb3BsZXxlbnwwfHwwfHx8MA%3D%3D',
+        name: 'Jayanth Baddila',
+        role: 'Director of Editorial',
+        avatar: '/TEAM CORE/BADDILA JAYANTH.jpg',
     },
     {
-        name: 'Volunteer 6',
-        role: 'Volunteer',
-        avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=300&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fHBlb3BsZXxlbnwwfHwwfHx8MA%3D%3D',
+        name: 'Raviteja Kondabathula',
+        role: 'Director of Social Media',
+        avatar: '/TEAM CORE/raviteja.jpg',
     },
     {
-        name: 'Volunteer 7',
-        role: 'Volunteer',
-        avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHBlb3BsZXxlbnwwfHwwfHx8MA%3D%3D',
+        name: 'Krishna Nand Jha',
+        role: 'Director of Marketing',
+        avatar: '/TEAM CORE/KRISHNA JHA.jpg',
+    },
+    
+    // Technical Team
+    {
+        name: 'Veligotla Yashasvi Koushik',
+        role: 'Website Manager',
+        avatar: '/TEAM CORE/koushik.jpeg',
     },
     {
-        name: 'Volunteer 8',
-        role: 'Volunteer',
-        avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDZ8fHBlb3BsZXxlbnwwfHwwfHx8MA%3D%3D',
+        name: 'Allenki Akshay',
+        role: 'Website Manager',
+        avatar: '/team/akshay.png',
+    },
+    
+    // Registration & Guest Care Team
+    {
+        name: 'Shveni Reddy Gobbur',
+        role: 'Registrations (Tickets)',
+        avatar: '/TEAM CORE/G SHVENI REDDY.jpg',
     },
     {
-        name: 'Volunteer 9',
-        role: 'Volunteer',
-        avatar: 'https://images.unsplash.com/photo-1522556189639-b150ed9c4330?w=300&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzB8fHBlb3BsZXxlbnwwfHwwfHx8MA%3D%3D',
+        name: 'Sreeja Joshi',
+        role: 'Registrations (Tickets)',
+        avatar: '/TEAM CORE/SREEJA JOSHI.jpg',
     },
     {
-        name: 'Volunteer 10',
-        role: 'Volunteer',
-        avatar: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=300&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8cGVvcGxlfGVufDB8fDB8fHww',
+        name: 'Chejarla Shanmukha Keerthana',
+        role: 'Guest Care',
+        avatar: '/TEAM CORE/CH.Shanmukha keerthana.jpg',
+    },
+    {
+        name: 'Tejaswi Cherukumalli',
+        role: 'Guest Care',
+        avatar: '/TEAM CORE/CHERUKUMALLI TEJASWI.jpg',
+    },
+    {
+        name: 'Tulasidhar',
+        role: 'Guest Care',
+        avatar: '/TEAM CORE/tulasidhar.jpg',
     },
 ];
 
@@ -181,7 +217,7 @@ export default function TeamSection() {
                 }
                 return prevIndex + 1;
             });
-        }, 3000); // Change every 3 seconds
+        }, 5000); // Change every 5 seconds for more relaxed viewing
 
         return () => clearInterval(interval);
     }, [isAutoScrolling, maxIndex]);
@@ -217,7 +253,7 @@ export default function TeamSection() {
                         <button
                             onClick={prevSlide}
                             disabled={currentIndex === 0}
-                            className="absolute -left-4 top-1/2 -translate-y-1/2 z-10 bg-red-500/80 hover:bg-red-500 disabled:opacity-30 disabled:cursor-not-allowed rounded-full p-3 transition-all duration-300 shadow-lg"
+                            className="absolute -left-4 top-1/2 -translate-y-1/2 z-10 bg-red-500/80 hover:bg-red-500 disabled:opacity-30 disabled:cursor-not-allowed rounded-full p-3 transition-all duration-500 ease-out shadow-lg hover:shadow-xl hover:scale-110"
                         >
                             <ChevronLeft className="w-6 h-6 text-white" />
                         </button>
@@ -225,21 +261,31 @@ export default function TeamSection() {
                         <button
                             onClick={nextSlide}
                             disabled={currentIndex >= maxIndex}
-                            className="absolute -right-4 top-1/2 -translate-y-1/2 z-10 bg-red-500/80 hover:bg-red-500 disabled:opacity-30 disabled:cursor-not-allowed rounded-full p-3 transition-all duration-300 shadow-lg"
+                            className="absolute -right-4 top-1/2 -translate-y-1/2 z-10 bg-red-500/80 hover:bg-red-500 disabled:opacity-30 disabled:cursor-not-allowed rounded-full p-3 transition-all duration-500 ease-out shadow-lg hover:shadow-xl hover:scale-110"
                         >
                             <ChevronRight className="w-6 h-6 text-white" />
                         </button>
 
                         {/* Team Cards Container */}
-                        <div className="overflow-hidden px-2">
+                        <div 
+                            className="overflow-hidden px-2"
+                            onMouseEnter={() => setIsAutoScrolling(false)}
+                            onMouseLeave={() => setIsAutoScrolling(true)}
+                        >
                             <div 
-                                className="flex transition-transform duration-700 ease-out"
-                                style={{ transform: `translateX(-${currentIndex * (100 / cardsPerView)}%)` }}
+                                className="flex"
+                                style={{ 
+                                    transform: `translateX(-${currentIndex * (100 / cardsPerView)}%)`,
+                                    transition: 'transform 1.2s cubic-bezier(0.23, 1, 0.32, 1)',
+                                    willChange: 'transform',
+                                    backfaceVisibility: 'hidden',
+                                    perspective: '1000px'
+                                }}
                             >
                                 {members.map((member, index) => (
                                     <div key={`member-${member.name}-${index}`} className="flex-shrink-0 px-3" style={{ width: `${100 / cardsPerView}%` }}>
-                                        <div className="bg-gray-900 border border-gray-800 rounded-xl p-6 hover:border-red-500 transition-all duration-500 group hover:scale-105 hover:shadow-xl hover:shadow-red-500/10">
-                                            <div className="bg-background size-28 rounded-full border-2 border-gray-700 p-1 shadow-lg shadow-black/30 mx-auto mb-4 group-hover:border-red-500 transition-colors duration-500">
+                                        <div className="bg-gray-900 border border-gray-800 rounded-xl p-6 hover:border-red-500 transition-all duration-700 ease-out group hover:shadow-xl hover:shadow-red-500/10 h-80 flex flex-col relative">
+                                            <div className="bg-background size-28 rounded-full border-2 border-gray-700 p-1 shadow-lg shadow-black/30 mx-auto mb-4 group-hover:border-red-500 transition-colors duration-500 flex-shrink-0">
                                                 <Image
                                                     className="aspect-square rounded-full object-cover"
                                                     src={member.avatar}
@@ -249,14 +295,16 @@ export default function TeamSection() {
                                                     loading="lazy"
                                                 />
                                             </div>
-                                            <div className="text-center">
-                                                <h3 className="block text-lg font-semibold text-white group-hover:text-red-500 transition-colors duration-300 mb-1">
+                                            <div className="text-center flex-1 flex flex-col justify-center">
+                                                <h3 className="block text-lg font-semibold text-white group-hover:text-red-500 transition-colors duration-300 mb-2 line-clamp-2">
                                                     {member.name}
                                                 </h3>
-                                                <span className="text-gray-400 block text-sm">
+                                                <span className="text-gray-400 block text-sm line-clamp-3 leading-relaxed">
                                                     {member.role}
                                                 </span>
                                             </div>
+                                            {/* Hover overlay for subtle scale effect without affecting layout */}
+                                            <div className="absolute inset-0 rounded-xl bg-red-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
                                         </div>
                                     </div>
                                 ))}
@@ -269,10 +317,10 @@ export default function TeamSection() {
                                 <button
                                     key={`dot-${index}`}
                                     onClick={() => goToSlide(index)}
-                                    className={`h-2 rounded-full transition-all duration-300 ${
+                                    className={`h-2 rounded-full transition-all duration-500 ease-out ${
                                         index === currentIndex 
-                                            ? 'bg-red-500 w-8' 
-                                            : 'bg-gray-600 hover:bg-gray-400 w-2'
+                                            ? 'bg-red-500 w-8 shadow-lg shadow-red-500/30' 
+                                            : 'bg-gray-600 hover:bg-gray-400 w-2 hover:w-4'
                                     }`}
                                 />
                             ))}

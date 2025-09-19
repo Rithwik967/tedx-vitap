@@ -7,6 +7,7 @@ import Image from "next/image";
 
 export function PreviousSpeakers() {
   const [active, setActive] = useState(null);
+  const [activeTab, setActiveTab] = useState('2025');
   const id = useId();
   const ref = useRef(null);
 
@@ -29,9 +30,37 @@ export function PreviousSpeakers() {
 
   useOutsideClick(ref, () => setActive(null));
 
+  const currentSpeakers = activeTab === '2025' ? speakers2025Data : previousSpeakersData;
+
   return (
     <div className="bg-black text-white py-20 px-6">
-        <h2 className="text-4xl font-bold text-center mb-12">Previous Year Speakers</h2>
+        <h2 className="text-4xl font-bold text-center mb-8">TEDx Speakers</h2>
+        
+        {/* Tab Navigation */}
+        <div className="flex justify-center mb-12">
+          <div className="bg-gray-800 rounded-lg p-1 flex">
+            <button
+              onClick={() => setActiveTab('2025')}
+              className={`px-6 py-3 rounded-md font-medium transition-all duration-200 ${
+                activeTab === '2025'
+                  ? 'bg-red-500 text-white'
+                  : 'text-gray-300 hover:text-white'
+              }`}
+            >
+              2025 Speakers
+            </button>
+            <button
+              onClick={() => setActiveTab('previous')}
+              className={`px-6 py-3 rounded-md font-medium transition-all duration-200 ${
+                activeTab === 'previous'
+                  ? 'bg-red-500 text-white'
+                  : 'text-gray-300 hover:text-white'
+              }`}
+            >
+              Previous Year Speakers
+            </button>
+          </div>
+        </div>
         <AnimatePresence>
             {active && typeof active === "object" && (
             <motion.div
@@ -115,7 +144,7 @@ export function PreviousSpeakers() {
             ) : null}
         </AnimatePresence>
         <ul className="max-w-4xl mx-auto w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-start gap-4">
-            {speakersData.map((card) => (
+            {currentSpeakers.map((card) => (
             <motion.li
                 layoutId={`card-${card.title}-${id}`}
                 key={card.title}
@@ -156,8 +185,103 @@ export function PreviousSpeakers() {
 
 const CloseIcon = () => { /* SVG icon code */ };
 
-// Your Speaker Data
-const speakersData = [
+// 2025 Speakers Data
+const speakers2025Data = [
+  {
+    description: "Music Artist & Educator",
+    title: "Martand Badoni",
+    src: "/Speakers/martand Badoni.jpg",
+    ctaText: "Follow on Instagram",
+    ctaLink: "https://www.instagram.com/chasingfolksounds/",
+    content: () => (
+      <div>
+        <p>Martand Badoni is a music artist and educator from Uttarakhand whose work bridges the old world and the new. Drawing from the languages he speaks and dreams in—Hindi, English, and Garhwali—he creates songs that carry the soul of folk music while embracing contemporary sounds.</p>
+        <p>His debut release &quot;Dekh Bhai&quot;, published in November last year, reflects this unique blend and has struck a chord with audiences, recently crossing 300,000 views on YouTube.</p>
+      </div>
+    ),
+  },
+  {
+    description: "Cosmetic Gynecologist & Infertility Specialist",
+    title: "Dr. Niveditha Kamaraj",
+    src: "/Speakers/nivedita kamaraju.jpg",
+    ctaText: "Follow on Instagram",
+    ctaLink: "https://www.instagram.com/nivedithakamaraj/?hl=en",
+    content: () => (
+      <div>
+        <p>Dr. Niveditha Kamaraj is a leading cosmetic gynecologist, obstetrician, and infertility specialist, currently serving as Consultant and Executive Director at Aakash Fertility Centre & Hospital, Chennai.</p>
+        <p>A gold medalist with an MS in Obstetrics & Gynecology from Sri Ramachandra Medical College, she has advanced training in infertility, reproductive medicine, and laparoscopic surgery. With over a decade of experience, she specializes in cosmetic gynecology, IVF, and ART treatments.</p>
+        <p>She has presented papers on female sexual health, scar pregnancies, and vaginismus at national and international forums, and actively promotes women&apos;s health awareness through media, workshops, and academic publications.</p>
+      </div>
+    ),
+  },
+  {
+    description: "Violinist & Indosoul Creator",
+    title: "Karthick Iyer",
+    src: "/Speakers/karthik iyer.jpg",
+    ctaText: "Follow on Instagram",
+    ctaLink: "https://www.instagram.com/karthick_iyer/",
+    content: () => (
+      <div>
+        <p>Karthick Iyer explored the world of both Carnatic and Western Violin Techniques to realise how much the two spectrums complement each other in holistically moulding a violinist.</p>
+        <p>This learning was pivotal in leading him to develop a sound of his own - Indosoul, one that seeks to dissolve barriers, genres and cultures. He has also worked with artists such as A. R. Rahman, Harris Jayaraj, Susheela Raman and Raghu Dixit.</p>
+        <p>A culmination of all this learning & performing over the last 20 yrs is Violin Technique with Karthick Iyer.</p>
+      </div>
+    ),
+  },
+  {
+    description: "COO at Codedale & Content Creator",
+    title: "Dodagatta Nihar",
+    src: "/Speakers/nihar.jpg",
+    ctaText: "Follow on Instagram",
+    ctaLink: "https://www.instagram.com/niihaaarrrr/",
+    content: () => (
+      <div>
+        <p>Dodagatta Nihar is the Chief Operating Officer (COO) at Codedale. He is also an active content creator with a significant following on Instagram (540K) and YouTube (200K).</p>
+        <p>His professional journey began by teaching coding to engineering students, and he has since conducted numerous workshops at various colleges. He has also had the honor of being a chief guest at several events, where he&apos;s focused on motivating and educating students.</p>
+        <p>He has previously spoken at Josh Talks and has given one TED Talk, making this his second TEDx speaking engagement. He started his career at a very early stage, which has provided him with unique experiences and perspectives.</p>
+      </div>
+    ),
+  },
+  {
+    description: "IAS Officer",
+    title: "Prashanth Surapati IAS",
+    src: "/Speakers/prashanth.jpg",
+    ctaText: "Follow on Instagram",
+    ctaLink: "https://www.instagram.com/prasanth_surapati_ias/",
+    content: () => (
+      <div>
+        <p>Prashanth Surapati is one of our distinguished speakers for TEDx VITAP 2025. More details about his background and expertise will be shared soon.</p>
+      </div>
+    ),
+  },
+  {
+    description: "Live Band",
+    title: "Taara Live Band",
+    src: "/Speakers/tara.jpg",
+    ctaText: "Follow on Instagram",
+    ctaLink: "https://www.instagram.com/taara_live?igsh=anE5a29oZXA0amd0",
+    content: () => (
+      <div>
+        <p>Taara Live Band is one of our distinguished performers for TEDx VITAP 2025. More details about their background and expertise will be shared soon.</p>
+      </div>
+    ),
+  },
+  {
+    description: "Founder of Magsmen Company",
+    title: "Sandeep N",
+    src: "/Speakers/Sandeep N.jpg",
+    ctaText: "Follow on LinkedIn",
+    ctaLink: "https://www.linkedin.com/in/itsnsandeep/?originalSubdomain=in",
+    content: () => (
+      <div>
+        <p>Sandeep N is the founder of Magsmen Company and one of our distinguished speakers for TEDx VITAP 2025. More details about his background and expertise will be shared soon.</p>
+      </div>
+    ),
+  },
+];
+
+// Previous Year Speakers Data
+const previousSpeakersData = [
   {
     description: "Singer",
     title: "Aaryan Banthia",

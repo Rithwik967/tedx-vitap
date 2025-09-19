@@ -32,7 +32,7 @@ const Navbar = () => {
       <div className="hidden md:flex gap-6 items-center">
         <Link href="/#about" className="text-white transition-all hover:text-red-500 hover:font-bold">About us</Link>
         <Link href="/team" className="text-white transition-all hover:text-red-500 hover:font-bold">Our Team</Link>
-        <Link href="/#sponsors" className="text-white transition-all hover:text-red-500 hover:font-bold">Sponsors</Link>
+        <Link href="/#contact" className="text-white transition-all hover:text-red-500 hover:font-bold">Contact Us</Link>
         <a 
           href="https://events.vitap.ac.in/e/tedxvitap-19fffad5-b29a-49e9-b330-2595a0e06a4c" 
           target="_blank" 
@@ -70,7 +70,7 @@ const Navbar = () => {
         <div className="md:hidden absolute right-6 top-full mt-3 w-52 bg-black border border-gray-800 rounded-lg p-4 shadow-xl z-50">
           <Link href="/#about" className="block text-white py-2 px-2 rounded hover:text-red-500 hover:font-bold transition-all">About us</Link>
           <Link href="/team" className="block text-white py-2 px-2 rounded hover:text-red-500 hover:font-bold transition-all">Our Team</Link>
-          <Link href="/#sponsors" className="block text-white py-2 px-2 rounded hover:text-red-500 hover:font-bold transition-all">Sponsors</Link>
+          <Link href="/#contact" className="block text-white py-2 px-2 rounded hover:text-red-500 hover:font-bold transition-all">Contact Us</Link>
           <div className="mt-4 pt-4 border-t border-gray-700">
             <a 
               href="https://events.vitap.ac.in/e/tedxvitap-19fffad5-b29a-49e9-b330-2595a0e06a4c" 
