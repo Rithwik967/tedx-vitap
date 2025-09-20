@@ -78,7 +78,7 @@ const members = [
     {
         name: 'Vishnu',
         role: 'Designer',
-        avatar: '/TEAM CORE/VISHNU VARDHAN SETTIPALLI.JPG',
+        avatar: '/TEAM CORE/VISHNU VARDHAN SETTIPALLI.jpg',
     },
     {
         name: 'Dharmika Sai Pavuluri',
