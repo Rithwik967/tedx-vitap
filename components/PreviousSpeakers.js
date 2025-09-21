@@ -275,7 +275,9 @@ const speakers2025Data = [
     ctaLink: "https://www.linkedin.com/in/itsnsandeep/?originalSubdomain=in",
     content: () => (
       <div>
-        <p>Sandeep N is the founder of Magsmen Brand Consultants and one of our distinguished speakers for TEDx VITAP 2025. More details about his background and expertise will be shared soon.</p>
+        <p>Sandeep is a driven entrepreneur who founded Magsmen Brand Consultants, marking it as the first brand consulting firm in Andhra Pradesh. This initiative has now expanded across two states and ventured its way to Australian market, where it has significantly boosted the growth and recognition of over 30 brands. Besides his venture in brand consulting, Sandeep plays a pivotal role at Wisecap Ventures, a firm dedicated to fostering early-stage companies with potential for impactful growth and sustainability. He utilizes his educational background, with degrees in both Business, computer science and law, to identify and mentor startups poised for success. Sandeep is also a non practicing enrolled advocate in Andhra Pradesh and personal brand consultant for notable individuals. His accomplishments in 2023 include being named Brand Consultant of the Year, receiving recognition among the top marketing leaders in India, and young alumni excellence award 2024 from Deakin University.
+
+Presently, Sandeep is focused on developing digital tools to aid small and medium businesses in India in achieving digital transformation at minimal costs. He is also passionate about assisting more startups through Launchpad, a platform designed to nurture and promote business innovation.</p>
       </div>
     ),
   },
