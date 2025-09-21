@@ -143,13 +143,13 @@ export function PreviousSpeakers() {
             </div>
             ) : null}
         </AnimatePresence>
-        <ul className="max-w-4xl mx-auto w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-start gap-4">
+        <ul className="max-w-4xl mx-auto w-full flex flex-wrap justify-center items-start gap-4">
             {currentSpeakers.map((card) => (
             <motion.li
                 layoutId={`card-${card.title}-${id}`}
                 key={card.title}
                 onClick={() => setActive(card)}
-                className="p-4 flex flex-col bg-neutral-900 border border-neutral-800 hover:bg-neutral-800 rounded-xl cursor-pointer"
+                className="p-4 flex flex-col bg-neutral-900 border border-neutral-800 hover:bg-neutral-800 rounded-xl cursor-pointer w-[calc(33.333%-1rem)] max-w-[20rem]"
             >
                 <div className="flex gap-4 flex-col w-full">
                 <motion.div layoutId={`image-${card.title}-${id}`}>
@@ -183,7 +183,32 @@ export function PreviousSpeakers() {
   );
 }
 
-const CloseIcon = () => { /* SVG icon code */ };
+const CloseIcon = () => {
+    return (
+      <motion.svg
+        initial={{
+          opacity: 0,
+        }}
+        animate={{
+          opacity: 1,
+        }}
+        exit={{
+          opacity: 0,
+          transition: {
+            duration: 0.05,
+          },
+        }}
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        strokeWidth="1.5"
+        stroke="currentColor"
+        className="w-6 h-6"
+      >
+        <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+      </motion.svg>
+    );
+  };
 
 // 2025 Speakers Data
 const speakers2025Data = [
@@ -243,6 +268,18 @@ const speakers2025Data = [
     ),
   },
   {
+    description: "Founder of Magsmen Brand Consultants",
+    title: "Sandeep N",
+    src: "/Speakers/Sandeep N.jpg",
+    ctaText: "Follow on LinkedIn",
+    ctaLink: "https://www.linkedin.com/in/itsnsandeep/?originalSubdomain=in",
+    content: () => (
+      <div>
+        <p>Sandeep N is the founder of Magsmen Brand Consultants and one of our distinguished speakers for TEDx VITAP 2025. More details about his background and expertise will be shared soon.</p>
+      </div>
+    ),
+  },
+  {
     description: "IAS Officer",
     title: "Prashanth Surapati IAS",
     src: "/Speakers/surapati.jpeg",
@@ -266,18 +303,7 @@ const speakers2025Data = [
       </div>
     ),
   },
-  {
-    description: "Founder of Magsmen Brand Consultants",
-    title: "Sandeep N",
-    src: "/Speakers/Sandeep N.jpg",
-    ctaText: "Follow on LinkedIn",
-    ctaLink: "https://www.linkedin.com/in/itsnsandeep/?originalSubdomain=in",
-    content: () => (
-      <div>
-        <p>Sandeep N is the founder of Magsmen Brand Consultants and one of our distinguished speakers for TEDx VITAP 2025. More details about his background and expertise will be shared soon.</p>
-      </div>
-    ),
-  },
+  
 ];
 
 // Previous Year Speakers Data
