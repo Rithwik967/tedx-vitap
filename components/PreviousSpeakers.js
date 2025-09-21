@@ -33,15 +33,15 @@ export function PreviousSpeakers() {
   const currentSpeakers = activeTab === '2025' ? speakers2025Data : previousSpeakersData;
 
   return (
-    <div className="bg-black text-white py-20 px-6">
-        <h2 className="text-4xl font-bold text-center mb-8">TEDx Speakers</h2>
+    <div className="bg-black text-white py-20 px-4 sm:px-6">
+        <h2 className="text-3xl sm:text-4xl font-bold text-center mb-8">TEDx Speakers</h2>
         
         {/* Tab Navigation */}
         <div className="flex justify-center mb-12">
-          <div className="bg-gray-800 rounded-lg p-1 flex">
+          <div className="bg-gray-800 rounded-lg p-1 flex flex-col sm:flex-row">
             <button
               onClick={() => setActiveTab('2025')}
-              className={`px-6 py-3 rounded-md font-medium transition-all duration-200 ${
+              className={`px-4 sm:px-6 py-3 rounded-md font-medium transition-all duration-200 text-sm sm:text-base ${
                 activeTab === '2025'
                   ? 'bg-red-500 text-white'
                   : 'text-gray-300 hover:text-white'
@@ -51,7 +51,7 @@ export function PreviousSpeakers() {
             </button>
             <button
               onClick={() => setActiveTab('previous')}
-              className={`px-6 py-3 rounded-md font-medium transition-all duration-200 ${
+              className={`px-4 sm:px-6 py-3 rounded-md font-medium transition-all duration-200 text-sm sm:text-base ${
                 activeTab === 'previous'
                   ? 'bg-red-500 text-white'
                   : 'text-gray-300 hover:text-white'
@@ -143,13 +143,13 @@ export function PreviousSpeakers() {
             </div>
             ) : null}
         </AnimatePresence>
-        <ul className="max-w-4xl mx-auto w-full flex flex-wrap justify-center items-start gap-4">
+        <ul className="max-w-4xl mx-auto w-full flex flex-wrap justify-center gap-4">
             {currentSpeakers.map((card) => (
             <motion.li
                 layoutId={`card-${card.title}-${id}`}
                 key={card.title}
                 onClick={() => setActive(card)}
-                className="p-4 flex flex-col bg-neutral-900 border border-neutral-800 hover:bg-neutral-800 rounded-xl cursor-pointer w-[calc(33.333%-1rem)] max-w-[20rem]"
+                className="p-4 flex flex-col bg-neutral-900 border border-neutral-800 hover:bg-neutral-800 rounded-xl cursor-pointer w-full sm:w-[calc(50%-0.5rem)] lg:w-[calc(33.333%-0.75rem)] max-w-[20rem]"
             >
                 <div className="flex gap-4 flex-col w-full">
                 <motion.div layoutId={`image-${card.title}-${id}`}>
