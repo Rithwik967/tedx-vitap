@@ -267,14 +267,14 @@ const speakers2025Data = [
     ),
   },
   {
-    description: "Founder of Magsmen Company",
+    description: "Founder of Magsmen Brand Consultants",
     title: "Sandeep N",
     src: "/Speakers/Sandeep N.jpg",
     ctaText: "Follow on LinkedIn",
     ctaLink: "https://www.linkedin.com/in/itsnsandeep/?originalSubdomain=in",
     content: () => (
       <div>
-        <p>Sandeep N is the founder of Magsmen Company and one of our distinguished speakers for TEDx VITAP 2025. More details about his background and expertise will be shared soon.</p>
+        <p>Sandeep N is the founder of Magsmen Brand Consultants and one of our distinguished speakers for TEDx VITAP 2025. More details about his background and expertise will be shared soon.</p>
       </div>
     ),
   },
