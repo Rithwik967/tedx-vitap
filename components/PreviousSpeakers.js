@@ -245,7 +245,7 @@ const speakers2025Data = [
   {
     description: "IAS Officer",
     title: "Prashanth Surapati IAS",
-    src: "/Speakers/prashanth.jpg",
+    src: "/Speakers/surapati.jpeg",
     ctaText: "Follow on Instagram",
     ctaLink: "https://www.instagram.com/prasanth_surapati_ias/",
     content: () => (
@@ -257,7 +257,7 @@ const speakers2025Data = [
   {
     description: "Live Band",
     title: "Taara Live Band",
-    src: "/Speakers/tara.jpg",
+    src: "/Speakers/taara.jpg",
     ctaText: "Follow on Instagram",
     ctaLink: "https://www.instagram.com/taara_live?igsh=anE5a29oZXA0amd0",
     content: () => (

@@ -14,7 +14,7 @@ const members = [
     {
         name: 'Thummanapelli Vaishnavi',
         role: 'Co-Organizer',
-        avatar: '/Team/vaishnavi.jpg',
+        avatar: '/TEAM CORE/vaishnavi.jpg',
     },
     {
         name: 'R.V.Laleeth Sai',
@@ -36,7 +36,7 @@ const members = [
     {
         name: 'Rithwik Sthambamkadi',
         role: 'Executive Producer',
-        avatar: '/Team/rithwik.png',
+        avatar: '/TEAM CORE/rithwik.png',
     },
     {
         name: 'Nallagatla Jahnavi',
@@ -78,7 +78,7 @@ const members = [
     {
         name: 'Vishnu',
         role: 'Designer',
-        avatar: '/TEAM CORE/VISHNU VARDHAN SETTIPALLI.JPG',
+        avatar: '/TEAM CORE/VISHNU VARDHAN SETTIPALLI.jpg',
     },
     {
         name: 'Dharmika Sai Pavuluri',
@@ -147,7 +147,7 @@ const members = [
     {
         name: 'Allenki Akshay',
         role: 'Website Manager',
-        avatar: '/team/akshay.png',
+        avatar: '/TEAM CORE/akshay.png',
     },
     
     // Registration & Guest Care Team

@@ -15,7 +15,7 @@ const members = [
     {
         name: 'Thummanapelli Vaishnavi',
         role: 'Co-Organizer',
-        avatar: '/team/vaishnavi.jpg',
+        avatar: '/TEAM CORE/vaishnavi.jpg',
         link: '#',
     },
     {
@@ -42,7 +42,7 @@ const members = [
     {
         name: 'Rithwik Sthambamkadi',
         role: 'Executive Producer',
-        avatar: '/team/rithwik.png',
+        avatar: '/TEAM CORE/rithwik.png',
         link: '#',
     },
     {
@@ -174,7 +174,7 @@ const members = [
     {
         name: 'Allenki Akshay',
         role: 'Website Manager',
-        avatar: '/team/akshay.png',
+        avatar: '/TEAM CORE/akshay.png',
         link: '#',
     },
     

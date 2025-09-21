@@ -1,7 +1,6 @@
 import Hero from "@/components/Hero";
 import { RedShaderBackground } from "@/components/ui/red-shader-background";
 import About from "@/components/About";
-import ReasonsToAttend from "@/components/ReasonsToAttend";
 import Events from "@/components/Events";
 import Team from "@/components/Team";
 import CallToAction from "@/components/ui/call-to-action-1";
@@ -30,7 +29,6 @@ export default function Home() {
       </div>
       
       <About />
-      <ReasonsToAttend />
       <Events />
       <PreviousSpeakers />
       <Team />
