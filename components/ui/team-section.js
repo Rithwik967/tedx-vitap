@@ -293,6 +293,13 @@ export default function TeamSection() {
                                                     height="112"
                                                     width="112"
                                                     loading="lazy"
+                                                    onLoad={() => {
+                                                        console.log(`Successfully loaded image: ${member.avatar}`);
+                                                    }}
+                                                    onError={(e) => {
+                                                        console.error(`Failed to load image: ${member.avatar}`, e);
+                                                        e.target.src = '/placeholder-avatar.png'; // Fallback image
+                                                    }}
                                                 />
                                             </div>
                                             <div className="text-center flex-1 flex flex-col justify-center">
