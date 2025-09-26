@@ -5,6 +5,18 @@ import Image from 'next/image';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const members = [
+    // Faculty Coordinators
+    {
+        name: 'Dr. Sudha Ellison Mathe',
+        role: 'Faculty Coordinator',
+        avatar: '/sudha-elson.jpg',
+    },
+    {
+        name: 'Dr. Aby Abraham',
+        role: 'Faculty Coordinator',
+        avatar: '/aby.jpg',
+    },
+    
     // Leadership Team
     {
         name: 'V.J.Maanasa Devi',

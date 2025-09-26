@@ -230,7 +230,7 @@ const speakers2025Data = [
     title: "Dr. Niveditha Kamaraj",
     src: "/Speakers/nivedita kamaraju.jpg",
     ctaText: "Follow on Instagram",
-    ctaLink: "https://www.instagram.com/nivedithakamaraj/?hl=en",
+    ctaLink: "https://www.instagram.com/drniveditha_kamaraj?igsh=dnBqaTA3dzBpOTNv",
     content: () => (
       <div>
         <p>Dr. Niveditha Kamaraj is a leading cosmetic gynecologist, obstetrician, and infertility specialist, currently serving as Consultant and Executive Director at Aakash Fertility Centre & Hospital, Chennai.</p>
@@ -302,6 +302,34 @@ Presently, Sandeep is focused on developing digital tools to aid small and mediu
     content: () => (
       <div>
         <p>Taara Live Band is one of our distinguished performers for TEDx VITAP 2025. More details about their background and expertise will be shared soon.</p>
+      </div>
+    ),
+  },
+  {
+    description: "Entrepreneur, IT Leader & Educator",
+    title: "Sathish Rajamani",
+    src: "/Speakers/Satish.jpg",
+    ctaText: "Follow on LinkedIn",
+    ctaLink: "#",
+    content: () => (
+      <div>
+        <p>Sathish Rajamani is a seasoned entrepreneur, IT leader, educator, author and mentor with nearly three decades of cross-industry experience. An alumnus of Vellore Institute of Technology and Birla Institute of Technology & Science, Pilani, he has also completed leadership programs at Stanford and Harvard.</p>
+        <p>He began his career with Rane NSK and held leadership roles at Oracle and Cognizant. Specializing in coaching C-suite executives and startups, he focuses on leadership, productivity, and growth, blending Eastern and Western philosophies with empathy and authenticity.</p>
+        <p>An adjunct professor at NJIT, he regularly writes and speaks on leadership, productivity, and technology, inspiring global audiences.</p>
+      </div>
+    ),
+  },
+  {
+    description: "Photographer & Filmmaker",
+    title: "Abbas Baig",
+    src: "/Speakers/abbas.jpg",
+    ctaText: "Follow on Instagram",
+    ctaLink: "#",
+    content: () => (
+      <div>
+        <p>Abbas Baig is a photographer and filmmaker based in Delhi. An engineer turned photographer, he made a decisive career shift in 2013 to pursue his passion for visual storytelling, enrolling at Jamia Millia Islamia to study photography full-time.</p>
+        <p>In 2021, Abbas became ambassador for Canon India and has been recognized among the top 10 photographers in India by platforms like Travel Triangle and FabHotels. His work has received several honors, including being a finalist at HIPA, Photographer of the Year at WPF, and recognition from IPF.</p>
+        <p>His work has been featured on global platforms such as National Geographic, BBC, and Adobe, and published in magazines including Lonely Planet, The Creative Image, and Collateral Italy. Beyond commercial work, Abbas conducts photo tours, workshops, and talks across India, often in remote and high-altitude regions like Spiti, Ladakh, and Kashmir.</p>
       </div>
     ),
   },

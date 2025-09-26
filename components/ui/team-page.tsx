@@ -5,6 +5,20 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 const members = [
+    // Faculty Coordinators
+    {
+        name: 'Dr. Sudha Ellison Mathe',
+        role: 'Faculty Coordinator',
+        avatar: '/sudha-elson.jpg',
+        link: '#',
+    },
+    {
+        name: 'Dr. Aby Abraham',
+        role: 'Faculty Coordinator',
+        avatar: '/aby.jpg',
+        link: '#',
+    },
+    
     // Leadership Team
     {
         name: 'V.J.Maanasa Devi',
@@ -92,7 +106,7 @@ const members = [
     {
         name: 'Vishnu',
         role: 'Designer',
-        avatar: '/TEAM CORE/VISHNU VARDHAN SETTIPALLI.jpg',
+        avatar: '/TEAM CORE/vishnu-test.jpg',
         link: '#',
     },
     {
@@ -212,6 +226,10 @@ const members = [
 ];
 
 // Group members by their roles
+const facultyMembers = members.filter(member => 
+    member.role === 'Faculty Coordinator'
+);
+
 const leadershipMembers = members.filter(member => 
     member.role === 'Lead Organizer (Licensee)' || member.role === 'Co-Organizer' || member.role === 'Curator'
 );
@@ -246,6 +264,37 @@ export default function TeamPage() {
                     </div>
                     <div className="mt-6 sm:mt-0">
                         <p className="text-gray-300">Passionate individuals working together to bring you inspiring ideas and transformative experiences at TEDx VITAP.</p>
+                    </div>
+                </div>
+                
+                {/* Faculty Coordinators Section */}
+                <div className="mt-12 md:mt-24">
+                    <h3 className="text-2xl font-bold text-white mb-8">Faculty Coordinators</h3>
+                    <div className="grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+                        {facultyMembers.map((member, index) => (
+                            <div key={index} className="group overflow-hidden">
+                                <Image 
+                                    className="h-96 w-full rounded-md object-cover object-top grayscale transition-all duration-500 hover:grayscale-0 group-hover:h-[22.5rem] group-hover:rounded-xl" 
+                                    src={member.avatar} 
+                                    alt="team member" 
+                                    width="826" 
+                                    height="1239" 
+                                />
+                                <div className="px-2 pt-2 sm:pb-0 sm:pt-4">
+                                    <div className="flex justify-between">
+                                        <h3 className="text-title text-base font-medium transition-all duration-500 group-hover:tracking-wider text-white">{member.name}</h3>
+                                        <span className="text-xs text-gray-400">_0{index + 1}</span>
+                                    </div>
+                                    <div className="mt-1 flex items-center justify-between">
+                                        <span className="text-muted-foreground inline-block translate-y-6 text-sm opacity-0 transition duration-300 group-hover:translate-y-0 group-hover:opacity-100 text-gray-400">{member.role}</span>
+                                        <Link href={member.link} className="group-hover:text-red-500 inline-block translate-y-8 text-sm tracking-wide opacity-0 transition-all duration-500 hover:underline group-hover:translate-y-0 group-hover:opacity-100 text-gray-400">
+                                            {' '}
+                                            Linktree
+                                        </Link>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
                     </div>
                 </div>
                 
