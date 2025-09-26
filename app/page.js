@@ -8,6 +8,7 @@ import ContactUs from "@/components/ui/contact-us";
 import Footer from "@/components/Footer";
 import PreviousSpeakers from "@/components/PreviousSpeakers";
 import Timeline from "@/components/Timeline";
+import TimelineNavigator from "@/components/TimelineNavigator";
 
 export default function Home() {
   return (
@@ -46,6 +47,9 @@ export default function Home() {
       </section>
       
       <Footer />
+      
+      {/* Timeline Navigator - Floating notification */}
+      <TimelineNavigator />
     </main>
   );
 }

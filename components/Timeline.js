@@ -5,7 +5,7 @@ import Image from 'next/image';
 
 export function Timeline() {
   return (
-    <section className="bg-black text-white py-20 px-4 sm:px-6">
+    <section id="timeline" className="bg-black text-white py-20 px-4 sm:px-6">
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-16">
