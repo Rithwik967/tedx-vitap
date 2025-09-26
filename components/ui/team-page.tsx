@@ -166,6 +166,12 @@ const members = [
         link: '#',
     },
     {
+        name: 'Satwik K',
+        role: 'Director of Editorial',
+        avatar: '/TEAM CORE/k-satwik.jpg',
+        link: '#',
+    },
+    {
         name: 'Raviteja Kondabathula',
         role: 'Director of Social Media',
         avatar: '/TEAM CORE/raviteja.jpg',
@@ -256,7 +262,7 @@ const operationsMembers = members.filter(member =>
 
 export default function TeamPage() {
     return (
-        <section className="bg-gray-50 py-16 md:py-32 dark:bg-black">
+        <section className="bg-black py-16 md:py-32">
             <div className="mx-auto max-w-5xl px-6">
                 <div className="mt-12 gap-4 sm:grid sm:grid-cols-2 md:mt-24">
                     <div className="sm:w-2/5">

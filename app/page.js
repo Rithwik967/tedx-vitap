@@ -7,6 +7,7 @@ import CallToAction from "@/components/ui/call-to-action-1";
 import ContactUs from "@/components/ui/contact-us";
 import Footer from "@/components/Footer";
 import PreviousSpeakers from "@/components/PreviousSpeakers";
+import Timeline from "@/components/Timeline";
 
 export default function Home() {
   return (
@@ -31,6 +32,7 @@ export default function Home() {
       <About />
       <Events />
       <PreviousSpeakers />
+      <Timeline />
       <Team />
       
       {/* Call to Action Section */}

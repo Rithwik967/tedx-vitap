@@ -140,6 +140,11 @@ const members = [
         avatar: '/TEAM CORE/BADDILA JAYANTH.jpg',
     },
     {
+        name: 'Satwik K',
+        role: 'Director of Editorial',
+        avatar: '/TEAM CORE/k-satwik.jpg',
+    },
+    {
         name: 'Raviteja Kondabathula',
         role: 'Director of Social Media',
         avatar: '/TEAM CORE/raviteja.jpg',
